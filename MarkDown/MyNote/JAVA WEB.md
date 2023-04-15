@@ -1,208 +1,15 @@
-<footer style="z-index:999; height:25px; background-color:rgba(105,105,105); position:fixed; bottom:0; right:0; left:0; text-align:center; line-height:25px;">
-    <a id="returntop" href="#top" style="text-decoration:none; outline:none;"> 
-         <b style="color:#8FBC8F; position:absolute; left:10px">
-            JAVA WEB 
-        </b>
-        <b style="color:#8FBC8F; position:absolute; left:0;right:0">
-            本笔记学习过程应用的编辑器为Eclipse  
-        </b>
-        <b style="color:#8FBC8F; position:absolute; right:10px">
-            返回目录 
-        </b>
-    </a>
-</footer>
 <style>
-    *::-webkit-scrollbar {
-        border-radius: 5px;
-        width: 10px;
-        height: 10px;
-        background-color: rgba(54,59,64);
-    }
-    *::-webkit-scrollbar-thumb {
-        border-radius: 5px;
-        background-color: gray;
-    }
-    h1 {
-        margin-top: auto;
-    }
-    ul {
-        list-style: disc;
-    }
-    h2 a,
-    h3 a {
-        color: #e0e0e0;
-        text-decoration: none;
-    }
-    h2 a:hover,
-    h3 a:hover {
-         color: LightCoral;
-	}
-    h2 a:hover::before {
-        content: "☛  ";
-        color:	PaleTurquoise;
-        font-size:30px;
-	}
-    h2 a:hover::after{
-        content: "  ☚";
-        color:	PaleTurquoise;
-        font-size:30px;
-	}
-    h3 a:hover::before {
-        content: "☞  ";
-        color:	PaleTurquoise;
-        font-size:20px;
-	}
-    h3 a:hover::after {
-        content: "  ☜";
-        color:	PaleTurquoise;
-        font-size:20px;
-	}
-    a:focus {
-        outline: none;
-    }
+    a {text-decoration: none;}
+    h1 {border-bottom: none; margin-top: auto;}
 </style>
+# <center>JAVA WEB</center>
 
-# 目录
+---
+---
+---
+## <center>JSP</center>
 
-> ## [JSP](#JSPSection)
->
-> > * ### [脚本](#JSPScript)
-> > 
-> > * ### [指令](#JSPInstruction)
-> > 
-> > * ### [内置对象](#JSPObject)
-> > 
-> > * ### [四种范围对象](#JSPRangeObject)
-> > 
-> > * ### [JavaBean的使用](#JSPJavaBean)
-> > 
-> > * ### [设置jsp项目服务器访问根路径](#JSPRootPath)
->
-> ## [SQL](#SQLSection)
->
-> > * ### [JDBC操作数据库](#JDBC)
-> >
-> > * ### [JDBC批量处理增删改语句](#JDBCBatch)
-> >
-> > * ### [JDBC事务处理](#JDBCTransactions)
-> >
-> > * ### [通过连接池连接数据库](#sqlPool)
-> >
-> > * ### [通过ThreadLocal获取与线程绑定的Connection](#ConnectionThreadLocal)
-> 
->## [Servlet](#ServletSection)
-> 
->> * ### [Servlet的使用](#useServlet)
-> >
-> > * ### [Servlet—过滤器](#servletFilter)
-> >
-> > * ### [Servlet监听器](#servletListener)
-> >
-> > * ### [Servlet—文件上传](#servletUpload)
-> >
-> > * ### [Servlet—文件下载](#servletDownload)
-> 
->## [Struts2](#Struts2Section)
-> 
->> * ### [Struts2的使用](#useStruts2)
-> >
-> > * ### [Struts2—action获取jsp对象](#actionJsp)
-> >
-> > * ### [Struts2—action封装表单提交数据](#actionForm)
-> >
-> > * ### [Struts2——拦截器](#interceptor)
-> >
-> > * ### [Struts2—值栈](#Struts2Stack)
-> >
-> > * ### [Struts2—文件上传](#Struts2Upload)
-> >
-> > * ### [Struts2—文件下载](#Struts2Download)
-> 
->## [Hibernate](#HibernateSection)
-> 
->> * ### [Hibernate配置](#HibernateConf)
-> >
-> > * ### [Hibernate配置数据源(连接池)](#HibernateDataSourse)
-> >
-> > * ###  [Hibernate的使用](#UseHibernate)
-> >
-> > * ### [Hibernate实体对象的四大状态](#HibernateEntityStatus)
-> >
-> > * ### [Hibernate增删改查(CRUD)](#HibernateCRUD)
-> >
-> > * ### [Hibernate调用存储过程或存储函数](#HibernateCall)
-> >
-> > * ### [Hibernate内置缓存](#HibernateCache)
-> 
-> ## [MyBatis](#MyBatisSection)
->
-> > * ### [MyBatis配置](#MyBatisConf)
->>
-> > * ### [MyBatis基础方式实现增删改查(CRUD)](#basicCRUD)
-> >
-> > * ### [MyBatis动态代理方式实现实现增删改查(CRUD)](#dynamicCRUD)
-> >
-> > * ### [MyBatis调用存储过程或存储函数](#MyCall)
-> >
-> > * ### [MyBatis获取与线程绑定的SqlSession](#MyThreadSqlSession)
-> >
-> > * ### [MyBatis动态SQL常用标签](#MyTag)
-> >
-> > * ### [MyBatis自定义数据类型转换器](#MyConverter)
-> >
-> > * ### [MyBatis内置缓存](#MyBatisCache)
-> 
-> ## [Spring](#SpringSection)
->
-> > * ### [Spring准备工作](#SpringReady)
->>
-> > * ### [Spring IOC容器](#SpringIOC)
-> >
-> > * ### [Spring IOC容器合并](#SpringIntegration)
-> >
-> > * ### [Spring IOC容器中引入属性文件](#SpringProperties)
-> >
-> > * ### [Spring bean的作用域](#SpringScope)
-> >
-> > * ###  [Spring bean的生命周期](#SpringBeanLifeCycle)
-> >
-> > * ### [Spring AOP——面向切面编程](#SpringAOP)
-> >
-> > * ### [Spring AOP切入点表达式](#AOPPointcutExp)
-> >
-> > * ### [基于接口的方式实现AOP](#AOPByInterceptor)
-> >
-> > * ### [基于注解方式实现AOP](#AOPByAnnotation)
-> >
-> > * ### [基于Schema方式实现AOP](#AOPBySchema)
-> >
-> > * ### [Spring配置数据源](#SpringDatasource)
-> >
-> > * ### [Spring事务管理](#SpringTransaction)
-> >
-> > * ### [Spring整合Hibernate](#SpringHibernate)
-> >
-> > *  ### [Spring整合MyBatis](#SpringMyBatis)
-> >
-> > * ### [Spring整合Web项目](#SpringServlet)
-> >
-> > * ### [Spring整合Struts2](#SpringStruts2)
-> 
-> ## [Others](#OthersSection)
->
-> > * ###  [服务器返回JSON字符串数据](#returnJson)
->>
-> > * ### [JavaScript—Ajax请求](#Ajax)
-
-------
-
-------
-
-------
-
-## <center id="JSPSection">JSP</center>
-
-### <span id="JSPScript">脚本:</span>
+### 脚本
 
 ```jsp
 1.
@@ -219,9 +26,9 @@
 
 ------
 
-### <span id="JSPInstruction">指令:</span>
+### 指令
 
-> #### page指令:
+> #### page指令
 
 ```jsp
 <%@ page attribute = "value" ··· %>
@@ -237,7 +44,7 @@
 例: <%@ page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="Java.util.*" %>
 ```
 
-> #### include指令:
+> #### include指令
 
 ```jsp
 <%@ include file = "···" %>
@@ -264,7 +71,7 @@
 
 ------
 
-### <span id="JSPObject">内置对象:</span>
+### 内置对象
 
 ``` jsp
 1. response:响应对象;
@@ -321,7 +128,7 @@
 
 ------
 
-### <span id="JSPRangeObject">四种范围对象(小  —> 大)</span>
+### 四种范围对象(小  —> 大)
 
 ```jsp
 <!--
@@ -353,7 +160,7 @@ application: 全局有效(整个项目有效, 切换浏览器仍然有效; 关�
 
 ------
 
-### <span id="JSPJavaBean">JavaBean的使用</span>
+### JavaBean的使用
 
 ```jsp
 JavaBean的使用的使用目的:
@@ -377,7 +184,7 @@ JavaBean的创建目录:
 
 ---
 
-### <span id="JSPRootPath">设置jsp项目服务器访问根路径</span>
+### 设置jsp项目服务器访问根路径
 
 ```jsp
 Step1. 获取项目访问根路径
@@ -403,16 +210,16 @@ Step2. 在head标签中引入根路径
 
 ---
 
-## <center id="SQLSection">SQL</center>
+## <center>SQL</center>
 
-### <span id="JDBC">JDBC操作数据库</span>
+###  JDBC操作数据库
 
 | **数据库类型** |        **驱动jar包**         |
 | :------------: | :--------------------------: |
 |     Oracle     |        ojdbc-xxx.jar         |
 |     MySQL      | mysql-connector-java-xxx.jar |
 |   SqlServer    |       sqljdbc-xxx.jar        |
->#### jdbc增删改查模板:
+>#### jdbc增删改查模板
 ```java
 查询结果对应的列的属性名(不区分大小写)/*createStatement版本:*/
 final String URL = "数据库连接字符串";  // MySQL 6.0及以上必须配置参数servertime(时区)
@@ -508,7 +315,7 @@ try {
 }
 ```
 
-> #### jdbc存储模板:
+> #### jdbc存储模板
 
 ```java
 /*prepareCall版本:*/
@@ -572,7 +379,7 @@ try {
 
 ----
 
-### <span id="JDBCBatch">JDBC批量处理增删改语句</span>
+### JDBC批量处理增删改语句
 
 > #### createStatement版本
 
@@ -694,7 +501,7 @@ try {
 
 ---
 
-### <span id="JDBCTransactions">JDBC事务处理</span>
+### JDBC事务处理
 
 > #### 事务的理解
 
@@ -713,11 +520,11 @@ Connection对象.setAutoCommit(false);
 
 ```java
 /*设置手动提交事务之后, 在发送sql的增删改查语句之后, 需要在提交事务之后才会真正对数据库做出操作*/
-    try{
-        // 通过[Statement|PreparedStatement|CallableStatement]对象逐条或批量发送sql增删改语句
-        ···
-        Connection对象.commit( ); //提交事务
-    }
+try{
+    // 通过[Statement|PreparedStatement|CallableStatement]对象逐条或批量发送sql增删改语句
+    ···
+    Connection对象.commit( ); //提交事务
+}
 
 /*Tip: 
     1. 当且仅当事务中所有的sql语句的虚拟执行结果都成功, 提交事务后才会对数据库进行实质性的修改, 否则不会对数据库进行操作！
@@ -730,15 +537,15 @@ Connection对象.setAutoCommit(false);
 ```java
 事务回滚: 将Connection对象的缓存信息("事务")还原至提交前数据库的真实状态, 避免缓存信息中的"脏数据"对后续查询产生影响
 /*使用事务回滚的前提是设置事务的提交方式为手动提交*/
-    catch (Exception e) { 
-    	Connection对象.rollback(); //事务回滚, 该操作必须在"catch"中进行
-    }
+catch (Exception e) {
+    Connection对象.rollback(); //事务回滚, 该操作必须在"catch"中进行
+}
 /*
 事务回滚是否执行, 取决去是否捕获到符合"catch"中规定的异常, 通常设置为"Exception",即只要try{}中有异常发生, 不管是不是SQLException, 都进行事务回滚, 视为整个事务操作失败
 */
 ```
 
-> > ##### 模板:
+> > ##### 模板
 
 ```java
 Connection对象.setAutoCommit(false); // 开启事务
@@ -769,7 +576,7 @@ Connection对象.rollback(spName);
 
 ---
 
-### <span id="sqlPool">通过连接池连接数据库</span>
+### 通过连接池连接数据库
 
 > #### DBCP连接池
 
@@ -1064,7 +871,7 @@ e. 后续操作与jdbc连接数据库操作相同;
 
 ---
 
-### <span id="ConnectionThreadLocal">通过ThreadLocal获取与线程绑定的Connection</span>
+### 通过ThreadLocal获取与线程绑定的Connection
 
 ```java
 客户端的每一次请求均可视为开启一个新的线程, "户端发出请求 ——> 服务端业务处理 ——> 服务端响应结束"这一过程均是在同一线程内完成的! 而我们将JDBC Connection对象与线程绑定的目的是为了保证同一个线程下对数据库的操作是在同一个Connection对象下完成的, 并且保证不同线程之间使用的Connection对象是不同的, 以免对数据库的存储信息或用户查询的信息造成混乱！
@@ -1079,7 +886,7 @@ e. 后续操作与jdbc连接数据库操作相同;
 */
 ```
 
-> #### 模板:
+> #### 模板
 
 ```java
 public class ConnectionThreadLocalManager {
@@ -1131,9 +938,9 @@ public class ConnectionThreadLocalManager {
 
 ---
 
-## <center id="ServletSection">Servlet</center>
+## <center>Servlet</center>
 
-### <span id="useServlet">Servlet的使用</span>
+### Servlet的使用
 
 ```xml
 Step1. 创建Servlet(常用方式):
@@ -1168,7 +975,7 @@ Step2. 配置Servlet(基础配置):
 
 ---
 
-### <span id="servletFilter">Servlet—过滤器</span>
+### Servlet—过滤器
 
 ```jsp
 <!-- 过滤器的作用是为了拦截客户端向服务端发送的请求, 以及服务端对客户端的响应, 对请求和响应做出验证, 验证通过则放行, 执行请求和响应的操作 -->
@@ -1244,7 +1051,7 @@ Step2. 配置Filter(基础配置):
 
 ---
 
-### <span id="servletListener">Servlet监听器</span>
+### Servlet监听器
 
 ```jsp
 <!-- Servlet监听器用于监听 application > session > request 三种与对象的变化 -->
@@ -1296,7 +1103,7 @@ Step2. 配置Listener(基础配置):
 
 ---
 
-### <span id="servletUpload">Servlet—文件上传</span>
+### Servlet—文件上传
 
 ```java
 两个必需jar包: commons-fileupload-Xxx.jar、commons-fileupload-Xxx.jar;
@@ -1309,7 +1116,7 @@ Step6. 为普通输入项书写普通输入项的执行代码
 Step7. 为文件输入项书写上传逻辑:在服务器上创建文件—>将本地文件上传到服务器上;
 ```
 
-> #### 模板:
+> #### 模板
 
 ```java
 /*以下代码书写在doGet()方法中*/
@@ -1383,7 +1190,7 @@ Step7. 为文件输入项书写上传逻辑:在服务器上创建文件—>将�
 
 ---
 
-### <span id="servletDownload">Servlet—文件下载</span>
+### Servlet—文件下载
 
 ```java
 Step1. 设置响应头消息;
@@ -1392,7 +1199,7 @@ Step3. 创建输出流, 通过输出流将已经转为输入流的文件输出�
 Step3. 关闭输出流与输入流;
 ```
 
-> #### 模板:
+> #### 模板
 
 ```java
 /*以下代码书写在doGet()方法中*/
@@ -1427,9 +1234,9 @@ Step3. 关闭输出流与输入流;
 
 ---
 
-## <center id="Struts2Section">Struts2</center>
+## <center>Struts2</center>
 
-### <span id="useStruts2">Struts2的使用</span>
+### Struts2的使用
 
 ``` jsp
 Step1. 导入相应版本的Struts2的jar包(可从解压的示例文件的lib目录中复制):
@@ -1582,9 +1389,9 @@ Step4. 在src(classpath)直接目录下创建并配置struts2的核心配置文�
 
 ---
 
-### <span id="actionJsp">Struts2—action获取Jsp对象</span>
+### Struts2—action获取Jsp对象
 
-> #### Method1——使用ActionContext类获取jsp对象:
+> #### Method1——使用ActionContext类获取jsp对象
 
 ```java
 a. 使用ActionContext类获取jsp对象:
@@ -1621,7 +1428,7 @@ b. 使用ActionContext类获取表单数据:
     }
 ```
 
-> #### Method2——使用ServletActionContext类获取jsp对象:
+> #### Method2——使用ServletActionContext类获取jsp对象
 
 ```java
 // 获取response对象     	   
@@ -1636,7 +1443,7 @@ HttpSession session = request.getSession();
 ServletContext application = ServletActionContext.getServletContext();
 ```
 
-> #### 注意:
+> #### 注意
 
 ```java
 1. 无法通过request.getRequestDispatcher的请求转发的方式访问一个action！
@@ -1645,11 +1452,11 @@ ServletContext application = ServletActionContext.getServletContext();
 
 ---
 
-### <span id="actionForm">Struts2—action封装表单提交数据</span>
+### Struts2—action封装表单提交数据
 
-[属性封装(单一变量)](#StrutsFormSingleVar) —— [属性封装(Array)](#StrutsFormArray) —— [属性封装(List)](#StrutsFormList)—— [属性封装(Map)](#StrutsFormMap) —— [模型驱动封装](#StrutsFormModelDriven) —— [表达式封装](#StrutsFormExp)
+[属性封装(单一变量)](./index.html#StrutsFormSingleVar) —— [属性封装(Array)](./index.html#StrutsFormArray) —— [属性封装(List)](./index.html#StrutsFormList)—— [属性封装(Map)](./index.html#StrutsFormMap) —— [模型驱动封装](./index.html#StrutsFormModelDriven) —— [表达式封装](./index.html#StrutsFormExp)
 
-[封装到实体类后在封装到List集合中](#StrutsFormEntityToLIst) —— [封装到实体类后在封装到Map映射中](#StrutsFormEntityToMap)
+[封装到实体类后在封装到List集合中](./index.html#StrutsFormEntityToLIst) —— [封装到实体类后在封装到Map映射中](./index.html#StrutsFormEntityToMap)
 
 
 > #### <span id="StrutsFormSingleVar">Method1.1——属性封装(将表单数据封装到单一变量中):</span>
@@ -2062,7 +1869,7 @@ ServletContext application = ServletActionContext.getServletContext();
 
 ---
 
-### <span id="interceptor">Struts2—拦截器</span>
+### Struts2—拦截器
 
 ```jsp
 <!--
@@ -2187,7 +1994,7 @@ login.jsp的表单内容:
 
 ---
 
-### <span id="Struts2Stack">Struts2—值栈</span>
+### Struts2—值栈
 
 > #### 理解
 
@@ -2199,7 +2006,7 @@ c. 先进栈的对象位于栈底, 后进栈的对象位于栈顶！！！
 
 > #### 向值栈中存放数据(三种方式)
 
-> > ##### 方式1:
+> > ##### 方式1
 
 ```java
 // 获取值栈对象
@@ -2212,7 +2019,7 @@ stack.push(Object value);
 */
 ```
 
-> > ##### 方式2:
+> > ##### 方式2
 
 ```java
 // 获取值栈对象
@@ -2225,7 +2032,7 @@ stack.set(String key, Object value);
 */
 ```
 
-> > ##### 方式3:
+> > ##### 方式3
 
 ```java
 Step1. 在action声明成员变量并未该成员变量创建getter方法
@@ -2263,7 +2070,7 @@ Step2. 执行方法里面为成员变量赋值(也可以在声明变量时直接
 
 ---
 
-### <span id="Struts2Upload">Struts2—文件上传</span>
+### Struts2—文件上传
 
 ```jsp
 Step1. 在action定义三个成员变量"上传文件"(File类型,且名称需要是"表单里面文件上传项的name值")、"文件名称"(String类型,名称为"表单里面文件上传项的name值"+"FileName")以及"文件MIME类型"(String类型,名称为"表单里面文件上传项的name值"+"ContentType",该变量可以省略);
@@ -2283,7 +2090,7 @@ Step5. 如果对文件上传类型有限制需求,则需在struts.xml中配置ac
     2. 有时不同版本的tomcat与struts2之间存在兼容性问题, tomcat中server.xml的<Connector>标签设置中有一属性属性为"maxSwallowSize" 默认为2097152即2M, 如果上传文件的实际大小减去Struts2设置的大小得到的值超过该设置的大小, 会出现文件超过大小限制无法跳转至指定"input"页面, 浏览器提示连接已重置, 无法访问此网站的问题; 若出现此问题需要将"maxSwallowSize"设置为较大的范围或直接设置为"-1"即没有限制
 -->
 ```
-> #### 模板:
+> #### 模板
 
 ``` jsp
 Step1-Step2-Step3(设置文件上传的action):
@@ -2347,7 +2154,7 @@ html表单样式:
 
 ---
 
-### <span id="Struts2Download">Struts2—文件下载</span>
+### Struts2—文件下载
 
 ```jsp
 Step1. 在action定义两个成员属性"文件输入流"(InputStream类型)以及"文件名称"(String类型);
@@ -2365,7 +2172,7 @@ Step4. 在struts.xml中配置result标签:
     </result>
 <!--Tip: Step1、Step2是为了Step4中struts.xml可以通过get方法获取action中的两个成员属性的值 -->
 ```
-> #### 模板:
+> #### 模板
 ```jsp
 Step1-Step2-Step3(设置文件下载的action):
     <%
@@ -2405,11 +2212,11 @@ Step4(设置struts.xml中的result标签):
 ---
 
 ---
-## <center id="HibernateSection">Hibernate</center>
+## <center>Hibernate</center>
 
-### <span id="HibernateConf">Hibernate配置</span>
+### Hibernate配置
 
-> #### Step1.引入必要的jar包:
+> #### Step1.引入必要的jar包
 
 ```java
 /*
@@ -2447,7 +2254,7 @@ Step4(设置struts.xml中的result标签):
 ```
 
 ---
-### <span id="HibernateDataSourse">Hibernate配置数据源(连接池)</span>
+### Hibernate配置数据源(连接池)
 
 ```java
 Hibernate支持的数据源(连接池)有三种, 分别是"JDBC(hibernate自维护)"、"C3p0"、"Proxool"、"JNDI"
@@ -2506,9 +2313,9 @@ Hibernate支持的数据源(连接池)有三种, 分别是"JDBC(hibernate自维�
 ```
 
 ---
-### <span id="UseHibernate">Hibernate的使用</span>
+### Hibernate的使用
 
-> #### 配置数据库表与实体类的对应关系:
+> #### 配置数据库表与实体类的对应关系
 
 > > ##### Step1.创建与数据库表相对应的实体类(最好实现序列化接口Serializable)
 
@@ -2626,15 +2433,15 @@ type ——> 用于指定数据映射类型, "integer"、"string"等, 可省略�
 ```
 ---
 
-### <span id="HibernateEntityStatus">Hibernate实体对象的四大状态</span>
+### Hibernate实体对象的四大状态
 
-> #### 临时(瞬时)态(Transient):
+> #### 临时(瞬时)态(Transient)
 
 ```java
 创建Session后, 由new操作符创建, 且尚未与Hibernate Session关联的对象
 ```
 
-> #### 持久态(Persistent):
+> #### 持久态(Persistent)
 
 ```java
 指得是与Hibernate Session关联并存放至hibernate一级缓存中的对象, 即经过"增"、"改"、"查"操作进而存放到一级缓存的对象:
@@ -2644,13 +2451,13 @@ type ——> 用于指定数据映射类型, "integer"、"string"等, 可省略�
 持久态的对象如果在事务提交前发生改变, 缓存中对应的数据也随之发生改变, 在事务提交后, 对象的变化也将被提交至数据库, 表中的记录也会做出相应的改变
 ```
 
-> #### 游离(脱管)态(Detached):
+> #### 游离(脱管)态(Detached)
 
 ```java
 持久态的对象被从缓存中清除或所在的Session被关闭后或, 对象由"持久态"转变为"游离态";
 ```
 
-> #### 删除态(Removed):
+> #### 删除态(Removed)
 
 ```java
 经过"删"操作的对象, 即调用Session的delete方法之后的对象: 
@@ -2660,7 +2467,7 @@ type ——> 用于指定数据映射类型, "integer"、"string"等, 可省略�
 
 ---
 
-### <span id="HibernateCRUD">Hibernate增删改查(CRUD)</span>
+### Hibernate增删改查(CRUD)
 
 > #### 增删改
 
@@ -2907,7 +2714,7 @@ query.setMaxResults(m); // 取出m条数据
 
 ---
 
-### <span id="HibernateCall">Hibernate调用存储过程或存储函数</span>
+### Hibernate调用存储过程或存储函数
 
 ```java
 "hibernate并没有提供已经封装好的调用存储过程或存储函数的操作, 因此想要调用存储过程或存储函数, 需要获取原生的数据库连接, 通过数据库连接以普通的JDBC的方式调用存储过程或存储函数"
@@ -2925,7 +2732,7 @@ Session对象.doWork(new Work() {
 
 ---
 
-### <span id="HibernatThreadSession">Hibernate获取与线程绑定的Session</span>
+### Hibernate获取与线程绑定的Session
 
 ```xml
 <!-- 在Hibernate核心配置文件中设置Session的管理方式: -->
@@ -2943,7 +2750,7 @@ Session session = sessionFactory.getCurrentSession(); // 若有与当前线程�
 
 ---
 
-### <span id="HibernateCache">Hibernate内置缓存</span>
+### Hibernate内置缓存
 
 > #### 一级缓存
 
@@ -3018,11 +2825,11 @@ SQL本地查询: NativeQuery对象.setCacheable(true);
 
 ---
 ---
-## <center id="MyBatisSection">MyBatis</center>
+## <center>MyBatis</center>
 
-### <span id="MyBatisConf">MyBatis配置</span>
+### MyBatis配置
 
->#### Step1.引入必要的jar包:
+>#### Step1.引入必要的jar包
 ```java
 /*
 Mybatis-Xxx.jar
@@ -3126,7 +2933,7 @@ PUBLIC "-//Mybatis.org//DTD Config Xxx//EN"
 </mappers>
 </configuration>
 ```
-### <span id="basicCRUD">MyBatis基础方式实现增删改查(CRUD)</span>
+### MyBatis基础方式实现增删改查(CRUD)
 
 >#### Sep1.创建与数据库中表相对应的实体类(最好实现序列化接口Serializable)
 ```java
@@ -3220,7 +3027,7 @@ try {
 ```
 ---
 
-### <span id="dynamicCRUD">MyBatis动态代理方式实现实现增删改查(CRUD)</span>
+### MyBatis动态代理方式实现实现增删改查(CRUD)
 
 >#### Method1. 接口类结合xml映射文件的方式(推荐)
 
@@ -3284,7 +3091,7 @@ try {
 -->
 ```
 
->#### Java操作代码:
+>#### Java操作代码
 ```java
 // 1. 加载核心配置文件
 Reader reader = Resources.getResourceAsReader("Mybatis配置文件路径"); 
@@ -3318,14 +3125,14 @@ try {
     // 该方法sql语句中"#{···}"与"${···}"中"···"只能是"arg+参数从0开始的索引"或"param+参数从1开始的索引"
     // 例: 
         注解接口方法: public void insertDataparmas(int id,String name,int age,int sex);
-        sql语句: insert into person(id,name,age,sex) values(#{arg0},#{arg1},#{arg2},#{arg3})
-        sql语句: insert into person(id,name,age,sex) values(#{param1},#{param2},#{param3},#{param4})
+        sql语句: insert into person(id,name,age,sex) values(./index.html#{arg0},#{arg1},#{arg2},#{arg3})
+        sql语句: insert into person(id,name,age,sex) values(./index.html#{param1},#{param2},#{param3},#{param4})
 "方法2.使用参数注解为参数设置别名传参:
     public 返回值类型 methodName(@Param("参数别名")参数1, @Param("参数别名")参数2, ···);
     // 该方法sql语句中"#{···}"与"${···}"中"···"只能是每个参数注解中所设置的"参数别名"
     // 例: 
         注解接口方法: public void insertDataparmas(@Param("pId")int id,@Param("pName")String name,@Param("pAge")int age,@Param("pSex")int sex);
-        sql语句: insert into person(id,name,age,sex) values(#{pId},#{pName},#{pAge},#{pSex})
+        sql语句: insert into person(id,name,age,sex) values(./index.html#{pId},#{pName},#{pAge},#{pSex})
   
             
 /*Tip: 
@@ -3335,7 +3142,7 @@ try {
 
 ---
 
-### <span id="MyCall">MyBatis调用存储过程或存储函数</span>
+### MyBatis调用存储过程或存储函数
 
 >
 >#### 代码书写位置: 
@@ -3379,7 +3186,7 @@ try {
     调用存储过程或存储函数的标签statementType属性必需为"CALLABLE", parameterType必须为"Map(HashMap)"
 -->
 ```
->#### Java操作代码:
+>#### Java操作代码
 ```java
 /*
 大体代码与"MyBatis基础方式实现增删改查(CRUD)"以及"MyBatis接口开发方式实现实现增删改查(CRUD)"两种方式相同, 主要区别在于传参形式必须为Map(HashMap)以及返回结果的获取上
@@ -3403,7 +3210,7 @@ Object result = paramsMap.get("输出结果名/返回结果名")
 ```
 ---
 
-### <span id="MyThreadSqlSession">MyBatis获取与线程绑定的SqlSession</span>
+### MyBatis获取与线程绑定的SqlSession
 
 ```java
 /*实例化SqlSessionManager对象(一般将其设置为全局变量)*/
@@ -3428,7 +3235,7 @@ sqlSessionManager.close(); // 关闭当前线程绑定的SqlSession对象, 之�
 
 ---
 
-### <span id="MyTag">MyBatis动态SQL常用标签</span>
+### MyBatis动态SQL常用标签
 
 >#### set、where、trim
 ```xml
@@ -3561,7 +3368,8 @@ sqlSessionManager.close(); // 关闭当前线程绑定的SqlSession对象, 之�
 ```
 ---
 
-### <span id="MyConverter">MyBatis自定义数据类型转换器</span>
+### MyBatis自定义数据类型转换器
+
 >#### 转换器功能介绍
 ```java
 /*
@@ -3577,7 +3385,7 @@ MyBatis类型转换器的作用是为了实现数据的Java类型与jdbc类型�
 */
 "我们使用自定义数据类型转换器的目的是为了实现默认转换器中不存在的数据类型的对应关系, 并设置自己期望的数据内容"
 ```
->#### Step1. 创建类型转换器继承BaseTypeHandler<T>类, 并重写其下的方法:
+>#### Step1. 创建类型转换器继承BaseTypeHandler<T>类, 并重写其下的方法
 ```java
 // T为期望的Java类型
 public class converterName extends BaseTypeHandler<T>{
@@ -3683,7 +3491,7 @@ private int sex; //  ！！错误 ！！
 该方式引入的数据类型转换器作用域是全局性的, 即凡是满足转换器的转换类型的数据, 都会执行该转换器
 -->
 ```
-> > ##### 例:
+> > ##### 例
 
 ```xml
 <configuration>
@@ -3707,7 +3515,7 @@ private int sex; //  ！！错误 ！！
     该方式引入的数据类型转换器作用域是局部性的, 即只有在使用配置了转换器的resultMap时, 才会触发类型转换器 ！！
 -->
 ```
-> > ##### 例:
+> > ##### 例
 
 ```xml
 <resultMap type="sqlPerson" id="sexMap">
@@ -3725,7 +3533,7 @@ private int sex; //  ！！错误 ！！
 <!-- 局部使用转换器 -->
 #{涉及使用转换器的参数, typeHandler=转换器的全类名}
 ```
-> > ##### 例:
+> > ##### 例
 
 ```xml
 <insert id="insert" parameterType="sqlPerson">
@@ -3744,7 +3552,7 @@ private int sex; //  ！！错误 ！！
 
 ---
 
-### <span id="MyBatisCache">MyBatis内置缓存</span>
+### MyBatis内置缓存
 
 >#### 一级缓存
 
@@ -3849,9 +3657,9 @@ public 返回值类型 methodName(传入的参数);
 
 ---
 
-## <center id="SpringSection">Spring</center>
+## <center>Spring</center>
 
-### <span id="SpringReady">Spring准备工作</span>
+### Spring准备工作
 
 ```xml
 <!-- eclipse安装Spring插件 -->
@@ -3874,9 +3682,9 @@ public 返回值类型 methodName(传入的参数);
 
 ---
 
-### <span id="SpringIOC">Spring IOC 容器</span>
+### Spring IOC 容器
 
-[两种IOC容器](#ICOKinds) —— [xml版本](#xmlIOC) —— [配置类版本](#classIOC) —— [三层注解](#MVCAnnotation) —— [java调用](#useIOCInJava) —— [例子](#IOCExample)
+[两种IOC容器](./index.html#ICOKinds) —— [xml版本](./index.html#xmlIOC) —— [配置类版本](./index.html#classIOC) —— [三层注解](./index.html#MVCAnnotation) —— [java调用](./index.html#useIOCInJava) —— [例子](./index.html#IOCExample)
 
 > #### <span id="ICOKinds">两种IOC容器——Spring配置文件</span>
 
@@ -4065,7 +3873,7 @@ ApplicationContext context = new AnnotationConfigApplicationContext("javap配置
 bean的class类型 objectName = (bean的class类型)context.getBean("配置文件bean标签的id值(或name中包含的别名)");
 ````
 
-> > ###### 注:
+> > ###### 注
 
 ```java
 对于接口的实现类, 再将其注入IOC容器时虽然使用的是实现类的全类名, 但是在获取对象时, 不能用实现类接收增强类对象, 只能用接口接收
@@ -4272,7 +4080,7 @@ Person [name=王浩; age=21; address=[homeAdress: 黑龙江省密山市, schooAd
 
 ---
 
-### <span id="SpringIntegration">Spring IOC容器的合并</span>
+### Spring IOC容器的合并
 
 > #### 基于xml的IOC容器的合并
 
@@ -4312,7 +4120,7 @@ Person [name=王浩; age=21; address=[homeAdress: 黑龙江省密山市, schooAd
 
 ---
 
-### <span id="SpringProperties">Spring IOC容器中引入属性文件</span>
+### Spring IOC容器中引入属性文件
 
 ```xml
 xml版本IOC容器中引入propeerties属性文件
@@ -4342,7 +4150,7 @@ Java配置类版本IOC容器中引入propeerties属性文件
 
 ---
 
-### <span id="SpringScope">Spring bean的作用域</span>
+### Spring bean的作用域
 
 ```xml
 Spring <bean>标签有一个属性"scope"决定该<bean>的作用域[注解方式可以通过类注解@Scope("···")设置], 即决定该<bean>是单实例还是多实例, 其可设置的参数值如下:
@@ -4379,7 +4187,7 @@ Spring <bean>标签有一个属性"scope"决定该<bean>的作用域[注解方�
 
 ---
 
-### <span id="SpringBeanLifeCycle">Spring bean的生命周期</span>
+### Spring bean的生命周期
 
 ```java
 /*bean的生命周期*/
@@ -4420,7 +4228,7 @@ Step2. 重写两个接口中的方法"afterPropertiesSet()"和"destroy()"
 
 ---
 
-### <span id="SpringAOP">Spring AOP——面向切面编程</span>
+### Spring AOP——面向切面编程
 
 > #### AOP个人理解
 
@@ -4440,7 +4248,7 @@ Step2. 重写两个接口中的方法"afterPropertiesSet()"和"destroy()"
 
 ---
 
-### <span id="AOPPointcutExp">Spring AOP切入点表达式</span>
+### Spring AOP切入点表达式
 
 > #### 作用
 
@@ -4487,7 +4295,7 @@ Step2. 重写两个接口中的方法"afterPropertiesSet()"和"destroy()"
 
 ---
 
-### <span id="AOPByInterceptor">基于接口的方式实现AOP</span>
+### 基于接口的方式实现AOP
 
 > #### 通过接口创建"通知"类
 
@@ -4601,7 +4409,7 @@ public class LogAroundName  implements MethodInterceptor{
 ```
 
 
-> > ##### 例:
+> > ##### 例
 
 ```java
 /*前置通知类*/
@@ -4743,7 +4551,7 @@ Person [name=王浩; age=21; address=[homeAdress: 黑龙江省密山市, schooAd
 
 ---
 
-### <span id="AOPByAnnotation">基于注解实现AOP</span>
+### 基于注解实现AOP
 
 > #### 通过注解创建"通知"类
 
@@ -4857,7 +4665,7 @@ java配置类版本
     @EnableAspectJAutoProxy
 ```
 
-> > ##### 例:
+> > ##### 例
 
 ``` java
 /*声明切面类*/
@@ -5011,7 +4819,7 @@ Person [name=王浩; age=21; address=[homeAdress: 黑龙江省密山市, schooAd
 
 ---
 
-### <span id="AOPBySchema">基于Schema方式实现AOP</span>
+### 基于Schema方式实现AOP
 
 > #### 创建"通知"类
 
@@ -5101,7 +4909,7 @@ public class LogSchemaClassName {
 </beans>
 ```
 
-> > ##### 例:
+> > ##### 例
 
 ```java
 /*创建切面类——通知类*/
@@ -5251,7 +5059,7 @@ Person [name=王浩; age=21; address=[homeAdress: 黑龙江省密山市, schooAd
 
 ---
 
-### <span id="SpringDatasource">Spring配置数据源</span>
+### Spring配置数据源
 
 > #### 通用数据源配置
 
@@ -5309,7 +5117,7 @@ public DataSource dataSource() {
 
 ---
 
-### <span id="SpringTransaction">Spring事务管理</span>
+### Spring事务管理
 
 > #### 理解
 
@@ -5396,7 +5204,7 @@ Step4. 在需要事务的地方使用"@Transactional"注解(需要开启注解�
 */
 ```
 
-> > ###### 提示:
+> > ###### 提示
 
 ```java
 1. "以上三种事务管理的前提是要将要管理的方法所在的类注入IOC容器中"
@@ -5406,7 +5214,7 @@ Step4. 在需要事务的地方使用"@Transactional"注解(需要开启注解�
 
 ---
 
-### <span id="SpringHibernate">Spring整合Hibernate</span>
+### Spring整合Hibernate
 
 > #### 核心思想
 
@@ -5508,7 +5316,7 @@ HibernateTemplate hibernateTemplate = getHibernateTemplate();
 
 ---
 
-### <span id="SpringMyBatis">Spring整合MyBatis</span>
+### Spring整合MyBatis
 
 > #### 核心思想
 
@@ -5574,7 +5382,7 @@ Step2. 在Spring IOC容器配置SqlSessionFactory(该类可以直接强转为Sql
 	SqlSession sqlSession = getSqlSession();
 ```
 
-> > ###### 注:
+> > ###### 注
 
 ```java
 通过以上两种方式配置得到的sqlSession对象是线程安全的, 即是与当前线程绑定的, 且必须使用Spring事务管理器对Mybatis进行事务管理, 否则程序报错; 并且不能对通过这两种方式得到的sqlSession对象, 调用commit()、rollback()或close()方法, 否则也会报错！！！
@@ -5582,7 +5390,7 @@ Step2. 在Spring IOC容器配置SqlSessionFactory(该类可以直接强转为Sql
 
 ---
 
-### <span id="SpringServlet">Spring整合Web项目</span>
+### Spring整合Web项目
 
 > #### 核心思想
 
@@ -5633,7 +5441,7 @@ Step2. 在servlet中从Spring IOC容器中获取对象:
 
 ---
 
-### <span id="SpringStruts2">Spring整合Struts2</span>
+### Spring整合Struts2
 
 > #### 核心思想
 
@@ -5660,13 +5468,13 @@ Step2. 在servlet中从Spring IOC容器中获取对象:
 
 ---
 
-## <center id="OthersSection">Others</center>
+## <center>Others</center>
 
-### <span id="returnJson">服务器返回JSON字符串数据</span>
+### 服务器返回JSON字符串数据
 
 > #### Servlet与Struts2通用方式(通过jsp内置out对象返回json字符串)
 
-> > ##### Method1. 通过JSONObject对象返回JSON字符串数据:
+> > ##### Method1. 通过JSONObject对象返回JSON字符串数据
 
 ```java
 Step1. 导入所需的6个jar包
@@ -5688,7 +5496,7 @@ Step4. 获取jsp内置out对象, 输出JSON字符串数据;
         out.println(jsonString);
 ```
 
-> > ##### Method2. 使用Gson返回JSON字符串数据:
+> > ##### Method2. 使用Gson返回JSON字符串数据
 
 ```java
 Step1. 导入所需的jar包:
@@ -5702,10 +5510,9 @@ Step3. 获取jsp内置out对象, 输出JSON字符串数据:
         PrintWriter out = response.getWriter();
         out.println(jsonString);
 ```
->
-> #### Struts2独有方式:
+>#### Struts2独有方式
 
-> > ##### Method3. 返回整体JSON字符串数据:
+> > ##### Method3. 返回整体JSON字符串数据
 
 ```jsp
 Step1. 导入所需的jar包:
@@ -5747,7 +5554,7 @@ Step5. 配置struts.xml文件:
     2. 整体通过js的JSON.parse()解析之后, 获取的jsonString依然是未被解析的JSON字符串,需要进行二次解析！！！
 --> 
 ```
->#### 注意:
+>#### 注意
 ```java
 1. 以上所有方法中所提到的返回的数据对象类型可以为(数值/字符串/数组/List表单/Map映射/实体类/···);
 2. Method1-Method3都是将不同对象封装到一个整体后在转换为一个JSON字符串数据, 而Method4是将不同对象分别换为JSON字符串后, 在将对象名与转换都的JSON字符串以键值对儿的方式封装到一个"{}"中进行输出;
@@ -5756,7 +5563,7 @@ Step5. 配置struts.xml文件:
 
 ---
 
-### <span id="Ajax">JavaScript—Ajax请求</span>
+### JavaScript—Ajax请求
 
 
 | XMLHttpRequest对象属性 |                           属性描述                           |
