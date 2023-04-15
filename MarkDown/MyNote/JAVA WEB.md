@@ -1454,12 +1454,7 @@ ServletContext application = ServletActionContext.getServletContext();
 
 ### Struts2—action封装表单提交数据
 
-[属性封装(单一变量)](./index.html#StrutsFormSingleVar) —— [属性封装(Array)](./index.html#StrutsFormArray) —— [属性封装(List)](./index.html#StrutsFormList)—— [属性封装(Map)](./index.html#StrutsFormMap) —— [模型驱动封装](./index.html#StrutsFormModelDriven) —— [表达式封装](./index.html#StrutsFormExp)
-
-[封装到实体类后在封装到List集合中](./index.html#StrutsFormEntityToLIst) —— [封装到实体类后在封装到Map映射中](./index.html#StrutsFormEntityToMap)
-
-
-> #### <span id="StrutsFormSingleVar">Method1.1——属性封装(将表单数据封装到单一变量中):</span>
+> #### Method1.1——属性封装(将表单数据封装到单一变量中)
 
 ```jsp
 步骤:
@@ -1502,7 +1497,7 @@ ServletContext application = ServletActionContext.getServletContext();
             <input type="submit" value="提交"/>
         </form>
 ```
-> #### <span id="StrutsFormArray">Method1.2——属性封装(将表单数据封装到Array数组中):</span>
+> #### Method1.2——属性封装(将表单数据封装到Array数组中)
 
 ```jsp
 步骤:
@@ -1540,7 +1535,7 @@ ServletContext application = ServletActionContext.getServletContext();
             <input type="submit" value="提交"/>
         </form>
 ```
-> #### <span id="StrutsFormList">Method1.3——属性封装(将表单数据封装到List集合中):</span>
+> #### Method1.3——属性封装(将表单数据封装到List集合中)
 
 ```jsp
 步骤:
@@ -1580,7 +1575,7 @@ ServletContext application = ServletActionContext.getServletContext();
         </form>
 
 ```
-> #### <span id="StrutsFormMap">Method1.4——属性封装(将表单数据封装到Map映射中):</span>
+> #### Method1.4——属性封装(将表单数据封装到Map映射中)
 
 ```jsp
 步骤:
@@ -1618,7 +1613,7 @@ ServletContext application = ServletActionContext.getServletContext();
             <input type="submit" value="提交"/>
         </form>
 ```
-> #### <span id="StrutsFormModelDriven">Method2(推荐)——模型驱动封装(将表单数据封装到单一的实体类中):</span>
+> #### Method2(推荐)——模型驱动封装(将表单数据封装到单一的实体类中)
 
 ```jsp
 步骤:
@@ -1677,7 +1672,7 @@ ServletContext application = ServletActionContext.getServletContext();
         </form>
 ```
 
-> ####  <span id="StrutsFormExp">Method3——表达式封装(将表单数据封装到实体类中, 可同时封装至多个不同的实体类):</span>
+> ####  Method3——表达式封装(将表单数据封装到实体类中, 可同时封装至多个不同的实体类)
 
 ```jsp
 步骤:
@@ -1735,7 +1730,7 @@ ServletContext application = ServletActionContext.getServletContext();
         </form>
 ```
 
-> #### <span id="StrutsFormEntityToLIst">Method4——将数据封装到实体类后在封装到List集合中(将多组表单数据分别封装到实体类后, 在封装到List集合中):</span>
+> #### Method4——将数据封装到实体类后在封装到List集合中(将多组表单数据分别封装到实体类后, 在封装到List集合中)
 
 ```jsp
 步骤:
@@ -1801,7 +1796,7 @@ ServletContext application = ServletActionContext.getServletContext();
         </form>
 ```
 
-> #### <span id="StrutsFormEntityToMap">Method5——将数据封装到实体类后在封装到Map映射中(将多组表单数据分别封装到实体类后, 在封装到Map中):</span>
+> #### Method5——将数据封装到实体类后在封装到Map映射中(将多组表单数据分别封装到实体类后, 在封装到Map中)
 
 ```jsp
 步骤:
@@ -3125,14 +3120,14 @@ try {
     // 该方法sql语句中"#{···}"与"${···}"中"···"只能是"arg+参数从0开始的索引"或"param+参数从1开始的索引"
     // 例: 
         注解接口方法: public void insertDataparmas(int id,String name,int age,int sex);
-        sql语句: insert into person(id,name,age,sex) values(./index.html#{arg0},#{arg1},#{arg2},#{arg3})
-        sql语句: insert into person(id,name,age,sex) values(./index.html#{param1},#{param2},#{param3},#{param4})
+        sql语句: insert into person(id,name,age,sex) values(#{arg0},#{arg1},#{arg2},#{arg3})
+        sql语句: insert into person(id,name,age,sex) values(#{param1},#{param2},#{param3},#{param4})
 "方法2.使用参数注解为参数设置别名传参:
     public 返回值类型 methodName(@Param("参数别名")参数1, @Param("参数别名")参数2, ···);
     // 该方法sql语句中"#{···}"与"${···}"中"···"只能是每个参数注解中所设置的"参数别名"
     // 例: 
         注解接口方法: public void insertDataparmas(@Param("pId")int id,@Param("pName")String name,@Param("pAge")int age,@Param("pSex")int sex);
-        sql语句: insert into person(id,name,age,sex) values(./index.html#{pId},#{pName},#{pAge},#{pSex})
+        sql语句: insert into person(id,name,age,sex) values(#{pId},#{pName},#{pAge},#{pSex})
   
             
 /*Tip: 
@@ -3684,9 +3679,7 @@ public 返回值类型 methodName(传入的参数);
 
 ### Spring IOC 容器
 
-[两种IOC容器](./index.html#ICOKinds) —— [xml版本](./index.html#xmlIOC) —— [配置类版本](./index.html#classIOC) —— [三层注解](./index.html#MVCAnnotation) —— [java调用](./index.html#useIOCInJava) —— [例子](./index.html#IOCExample)
-
-> #### <span id="ICOKinds">两种IOC容器——Spring配置文件</span>
+> #### 两种IOC容器——Spring配置文件
 
 ```xml
 <!--xml版本IOC容器:
@@ -3716,7 +3709,7 @@ public class applicationContext {
 
 ```
 
-> ####  <span id="xmlIOC">向Spring IOC容器(xml版本)中注入bean</span>
+> ####  向Spring IOC容器(xml版本)中注入bean
 
 ```xml
 <!-- set注入: 通过调用方法setter方法setXxx()赋值 -->
@@ -3796,7 +3789,7 @@ public class applicationContext {
 </bean>
 ```
 
-> #### <span id="classIOC">向Spring IOC容器(java类版本)中注入bean</span>
+> #### 向Spring IOC容器(java类版本)中注入bean
 
 ```java
 // 复杂成员属性自行创建的方式:
@@ -3821,7 +3814,7 @@ public returnType methodName(paramType1 paramName,paramType2 paramName,···) {
 */
 ```
 
-> #### <span id="MVCAnnotation">三层注解(功能注解)方式向Spring IOC容器中注入bean</span>
+> #### 三层注解(功能注解)方式向Spring IOC容器中注入bean
 
 ```jsp
 <!-- 准备工作 -->
@@ -3861,7 +3854,7 @@ public returnType methodName(paramType1 paramName,paramType2 paramName,···) {
 */      
 ```
 
-> #### <span id="useIOCInJava">在Java代码中调用</span>
+> #### 在Java代码中调用
 
 ````java
 
@@ -3879,7 +3872,7 @@ bean的class类型 objectName = (bean的class类型)context.getBean("配置文�
 对于接口的实现类, 再将其注入IOC容器时虽然使用的是实现类的全类名, 但是在获取对象时, 不能用实现类接收增强类对象, 只能用接口接收
 ```
 
-> > ##### <span id="IOCExample">例:</span>
+> > ##### 例
 
 ```java
 /*实体类Person*/
