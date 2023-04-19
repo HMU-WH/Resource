@@ -11,7 +11,7 @@
 ##' @param Sets.List list 集合列表, 每一个元素为一个向量
 ##' @param Show.Set.Total logical 设置是否统计各集合的元素数量并显示在集合标签尾部; 默认FALSE
 ##' @param Show.Percentage logical 设置是否计算各交集元素所占总元素数量的百分比并标注在交集标签下方; 默认FALSE
-##' @param Sets.Name character[] 设置每个集合名称的向量，用于设置集合标签; 默认NULL
+##' @param Sets.Name character[] 设置每个集合名称的向量, 用于设置集合标签; 默认NULL
 ##' @param Sets.Fill.Colour character[] 设置每个集合填充颜色的向量; 默认NULL
 ##' @param Sets.Fill.Opacity numeric 设置集合的填充颜色的透明度; 默认0.5
 ##' @param Sets.Name.Size numeric 设置集合标签的尺寸; 默认5
@@ -130,7 +130,7 @@ Venn.View <- function(..., Sets.List = NULL,
 ##' @description 对基因组上的信号特征(点和线段)进行可视化
 ##' @author Xteam.Wh
 ##' @param ... list 每个list包含以下元素(其中至少要包含Point.Data与Segment.Data其中的一项, 否则将被从队列中移除): 
-############' $Feature.Name character 特征名，将作为对应的纵坐标title属性; 默认NULL
+############' $Feature.Name character 特征名, 将作为对应的纵坐标title属性; 默认NULL
 ############' $Point.Data data.frame 包含必要列[SeqName(序列名)、Position(所在序列的位点)、Feature.Value(特征信号值)], 可选列[Feature.Type(特征信号所属类别)]
 ############' $Segment.Data data.frame 包含必要列[SeqName(序列名)、Position.Start(所在序列的起始位点)、Position.End(所在序列的结束位点)、 Feature.Value(特征信号值)], 可选列[Feature.Type(特征信号所属类别)]
 ########################' 注意: SeqName信息要与选择的Genome.Version保持一致
@@ -145,7 +145,7 @@ Venn.View <- function(..., Sets.List = NULL,
 ############' $Segment.Colour character 设置线段的颜色; 默认如果包含Point.Data设置为"OrangeRed", 不包含Point.Data设置"#2F4F4F", 
 ############' $Segment.LineType numeric | character 设置线段的线型; 默认"solid"
 ############' $Colour.Map characte[] 设置颜色映射集合, 与"Feature.Type"包含的元素种类相对应; 默认NULL
-##' @param Feature.Data.List list 特征list数据集合，每个特征信号对应一个list, 每个list包含的元素与可变参数(...)传入的每个list一致
+##' @param Feature.Data.List list 特征list数据集合, 每个特征信号对应一个list, 每个list包含的元素与可变参数(...)传入的每个list一致
 ##' @param Auto.Marge logical 设置是否自动对各图表进行合并; 默认TRUE
 ##' @param SeqName.Ratio numeric 设置组合图片中基因组条带图所占的比例, 当且仅当Auto.Marge = TRUE时生效; 默认0.125
 ##' @param Feature.Name.Aligned logical 设置各图表纵坐标title是否保持对齐, 当且仅当Auto.Marge = TRUE时生效; 默认FALSE
@@ -176,7 +176,7 @@ Genome.View <- function(...,
   Genome.Seqinfo.SeqLength <- Genome.Seqinfo@seqlengths
   
   ############
-  ## 3.提取绘图数据所包含的基因组序列， 并判断这些序列是否存在与所选取的基因组版本中
+  ## 3.提取绘图数据所包含的基因组序列,  并判断这些序列是否存在与所选取的基因组版本中
   ############
   # 提取特征信号数据中包含的基因组序列名称
   Common.SeqName <- unique(
@@ -195,11 +195,11 @@ Genome.View <- function(...,
   ############
   # 提取特征数据与参考基因组共有的序列信息
   Common.SeqName.Info <- data.frame(SeqName = Genome.Seqinfo.SeqName[Genome.Seqinfo.SeqName %in% Common.SeqName], SeqLength = Genome.Seqinfo.SeqLength[Genome.Seqinfo.SeqName %in% Common.SeqName])
-  # 将共有序列的长度累加，用于后面绘制横坐标的位点信息
+  # 将共有序列的长度累加, 用于后面绘制横坐标的位点信息
   Common.SeqName.Info$Accumulate.SeqLength  <- cumsum(as.numeric(Common.SeqName.Info$SeqLength))
   # 计算序列名称在横坐标的标记位点
   Common.SeqName.Info$Label.Position <- (2*Common.SeqName.Info$Accumulate.SeqLength - Common.SeqName.Info$SeqLength)/2
-  # 建立一个序列长度映射，用于后面计算特这数据的横坐标
+  # 建立一个序列长度映射, 用于后面计算特这数据的横坐标
   Common.SeqName.Accumulate.Before.Map <- setNames(object = Common.SeqName.Info$Accumulate.SeqLength - Common.SeqName.Info$SeqLength, nm = Common.SeqName.Info$SeqName)
   
   ############
@@ -339,7 +339,7 @@ Genome.View <- function(...,
 ##' @author Xteam.Wh
 ##' @param Data data.frame data.frame 包含必要列[SeqName(序列名)、Position.Start(所在序列的起始位点)、Position.End(所在序列的终止位点)、CN.Major(主拷贝数)、 CN.Minor(次拷贝数)]
 ############' 注意: SeqName信息要与选择的Genome.Version保持一致
-##' @param Plot.Title character 设置图片标题，将被添加到图片的正上方; 默认NULL
+##' @param Plot.Title character 设置图片标题, 将被添加到图片的正上方; 默认NULL
 ##' @param Minor.Colour character CN.Minor所显示的颜色; 默认"#696969"
 ##' @param Major.Colour character CN.Major所显示的颜色; 默认"#2F4F4F"
 ##' @param Genome.Version character 设置基因组版本号, 可选unique(c(GenomeInfoDb::registered_UCSC_genomes()$genome, GenomeInfoDb::registered_NCBI_assemblies()$assembly))
@@ -373,11 +373,11 @@ Genome.Allele.CN.View <- function(Data,
   if(all(unique(Data$SeqName) %in% Genome.Seqinfo.SeqName)){
     # 提取特征数据与参考基因组共有的序列信息
     Common.SeqName.Info <- data.frame(SeqName = Genome.Seqinfo.SeqName[Genome.Seqinfo.SeqName %in% unique(Data$SeqName)], SeqLength = Genome.Seqinfo.SeqLength[Genome.Seqinfo.SeqName %in% unique(Data$SeqName)])
-    # 将共有序列的长度累加，用于后面绘制横坐标的位点信息
+    # 将共有序列的长度累加, 用于后面绘制横坐标的位点信息
     Common.SeqName.Info$Accumulate.SeqLength  <- cumsum(as.numeric(Common.SeqName.Info$SeqLength))
     # 计算序列名称在横坐标的标记位点
     Common.SeqName.Info$Label.Position <- (2*Common.SeqName.Info$Accumulate.SeqLength - Common.SeqName.Info$SeqLength)/2
-    # 建立一个序列长度映射，用于后面计算特这数据的横坐标
+    # 建立一个序列长度映射, 用于后面计算特这数据的横坐标
     Common.SeqName.Accumulate.Before.Map <- setNames(object = Common.SeqName.Info$Accumulate.SeqLength - Common.SeqName.Info$SeqLength, nm = Common.SeqName.Info$SeqName)
     
     # 格式化特征数据的基因组坐标绘图信息

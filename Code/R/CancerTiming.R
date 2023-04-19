@@ -1,11 +1,16 @@
-##' @description CancerTiming计算("WGD"、"CNLOH"、"SingleGain"、"DoubleGain")拷贝数改变事件发生的相对时间
+##############################函数描述##############################
+# "CancerTiming"计算拷贝数改变事件("WGD"、"CNLOH"、"SingleGain"、"DoubleGain")发生的相对时间
+####################################################################
+
+
+##' @description 计算拷贝数改变事件("WGD"、"CNLOH"、"SingleGain"、"DoubleGain")发生的相对时间
 ##' @author Xteam.Wh
 ##' @param MUT.Data matrix | data.frame 包含突变信息的矩阵, 包含必要列[Sample.ID(样本标识ID), SeqName(序列名), Position(所在序列的位点), Alt.Counts(变异等位的reads数), Ref.Counts(参考等位的reads数)]
 ##' @param CNV.Data matrix | data.frame 包含拷贝数改变信息的矩阵, 包含必要列[Sample.ID(样本标识ID), SeqName(序列名), Position.Start(所在序列的起始位点), Position.End(所在序列的结束位点), CN.Major(主拷贝数), CN.Minor(次拷贝数)]
 ##' @param Samples.Purity numeric[] 一个包含以样本标识ID命名的数值向量, 包含了各样本的肿瘤纯度
-##' @param Min.Mutations numeric 规定位于拷贝数变异区域上的最少突变数量(至少为2)，包含突变少于这个数目的片段将将被从分析队列中剔除
+##' @param Min.Mutations numeric 规定位于拷贝数变异区域上的最少突变数量(至少为2), 包含突变少于这个数目的片段将将被从分析队列中剔除
 ##' @param Bootstrap.Type character 设置进行Bootstrap抽样计算置信区间时采用的分析模型, 可选("parametric", "nonparametric"), 默认"parametric"
-##' @param CancerTiming.WGD.Path character 文献《The evolutionary history of 2,658 cancers，nature，2020》改进的代码路径, 默认是网络地址, 如果运行时无法访问网络可以下载到本地更换为本地地址
+##' @param CancerTiming.WGD.Path character 文献《The evolutionary history of 2,658 cancers, nature, 2020》改进的代码路径, 默认是网络地址, 如果运行时无法访问网络可以下载到本地更换为本地地址
 ############' 下载地址: https://github.com/clemencyjolly/PCAWG11-Timing_and_Signatures/blob/master/cancerTiming.WGD.R
 ##' @return data.frame 包含列: 
 ############' $Sample 样本ID 

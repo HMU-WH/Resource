@@ -42,15 +42,15 @@ Parallel.Execut <- function(Data, Function, ..., Cores.Need = 1, Cores.Type = c(
   }
   # 创建集群(并行运算的运行环境)
   Cluster <- makeCluster( spec = Cores.Use, type = ifelse(Sys.Type == "Windows", "PSOCK", "FORK"))
-  on.exit(stopCluster(Cluster), add = TRUE) # 当函数运行结束或发生错误被终止时，自动关闭集群
-  # 由于Windows操作系统各线程之间无法共享内存，因此需要将用到的R包和变量在每个线程中均分配一份
+  on.exit(stopCluster(Cluster), add = TRUE) # 当函数运行结束或发生错误被终止时, 自动关闭集群
+  # 由于Windows操作系统各线程之间无法共享内存, 因此需要将用到的R包和变量在每个线程中均分配一份
   if(Sys.Type == "Windows"){
     assign(".Common.Packages", Common.Packages, envir = globalenv())
     on.exit(remove(.Common.Packages, envir = .GlobalEnv), add = TRUE)
     clusterExport(Cluster, varlist = c(Common.Objects, ".Common.Packages"))
     clusterEvalQ(Cluster, eval(parse(text = paste0(sprintf("library(%s)", .Common.Packages), collapse = ";"))))
   }
-  # 依据Type类型，进行并行运算的操作并获取返回结果
+  # 依据Type类型, 进行并行运算的操作并获取返回结果
   Parallel.Result <- switch(Parallel.Type,
                             ParApply = parApply(Cluster, Data, MARGIN = ParApply.MARGIN, Function, ...),
                             ParLapply = parLapply(Cluster, Data, Function, ...),
@@ -91,7 +91,7 @@ Foreach.Execut <- function(Data, Function, ..., Cores.Need = 1, Cores.Type = c("
   }
   # 创建集群(并行运算的运行环境)
   Cluster <- makeCluster( spec = Cores.Use, type = ifelse(Sys.Type == "Windows", "PSOCK", "FORK"))
-  on.exit(stopCluster(Cluster), add = TRUE) # 当函数运行结束或发生错误被终止时，自动关闭集群
+  on.exit(stopCluster(Cluster), add = TRUE) # 当函数运行结束或发生错误被终止时, 自动关闭集群
   registerDoParallel(Cluster) # 进行集群注册
   # 进行并行运算并返回结果
   Foreach.Result <- foreach(Iterative.Data = Data, .packages = Common.Packages, .export = Common.Objects) %dopar% Function(Iterative.Data, ...)

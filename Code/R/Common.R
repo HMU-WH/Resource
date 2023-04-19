@@ -8,7 +8,6 @@
 ##' @param System.Command character 设置要执行的终端命令
 ##' @param Success.Message character 设置终端命令成功运行后给出的提示信息; 默认""
 System.Command.Run <- function(System.Command, Success.Message = ""){
-  
   # 参数判断
   System.Command <- as.character(System.Command)
   Success.Message <- as.character(Success.Message)

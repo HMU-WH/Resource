@@ -12,7 +12,7 @@
 ##' @param Output.Prefix character 结果文件(csv格式)前缀[可携带路径]; 默认NULL, 即前工作目录下的"Facets.SNP-Pileup"
 ##' @param Sort.Operation character 设置对BAM.Set中的文件以及Common.Vcf进行排序操作的方式, 可选("Auto", "Sort", "None"); 默认"Auto"
 ##' @param Compress.Output logical 设置是否对对结果文件进行压缩(csv.gz格式); 默认TRUE
-##' @param Show.Progress logical 设置是否显示SNP Pileup的进度条(需要先统计SNP数量，增加程序的运行时间); 默FALSE
+##' @param Show.Progress logical 设置是否显示SNP Pileup的进度条(需要先统计SNP数量, 增加程序的运行时间); 默FALSE
 ##' @param Skip.Anomalous logical 设置是否跳过异常的异常读取对; 默认TRUE
 ##' @param Check.Overlaps logical 设置是否启用读取对重叠检测; 默认TRUE
 ##' @param Max.Depth numeric 设置最大深度, 即每个位点在各文件中允许的最大read数; 默认4000
@@ -160,7 +160,7 @@ Facets.SNP.Pileup <- function(BAM.Set, Common.Vcf, System.Pileup.Alias = "snp-pi
 ##' @param SNP.Het.VAF numeric 设置SNP位点被判定为杂合位点的阈值, 正常样本VAF介于(SNP.Het.VAF, 1 - SNP.Het.VAF)之间的SNP被判定为杂合; 若Tumor.Normal.Matched为FALSE, 该值应小于等于0.1, 此时肿瘤样本VAF介于(SNP.Het.VAF, 1 - SNP.Het.VAF)之间且总read数大于等于50的SNP被判定为杂合; 默认0.25
 ##' @param Bin.Size numeric 设置窗口大小, 每个窗口将随机选择一个SNP位点(优先选择杂合位点)进行后续分析(基因组中的SNP不是均匀分布的, 使用所有位点将导致数据中的序列相关); 默认250
 ##' @param Segmentation.Critical.Value numeric[] 设置片段分割过程中断点识别的T2临界值以及后期用于断点筛选的T2临界值, 该值越小识别和筛选的断点数目越多, 即片段更多; 默认c(25, 150)
-##' @param Segment.Min.Het numeric 设置分析次拷贝数时基因组片段至少应该具有的杂合性SNP位点的数量(当一个片段的杂合性SNP少于Segment.Min.Het时，可能无法有效地估计次要拷贝数，因此将返回NA); 默认15
+##' @param Segment.Min.Het numeric 设置分析次拷贝数时基因组片段至少应该具有的杂合性SNP位点的数量(当一个片段的杂合性SNP少于Segment.Min.Het时, 可能无法有效地估计次要拷贝数, 因此将返回NA); 默认15
 ##' @param EM.Max.Iter numeric 设置期望最大化算法最大的迭代次数; 默认10
 ##' @param EM.Con.Thresh numeric 设置在EM.Max.Iter内达到终止条件的收敛阈值; 默认0.001
 ##' @return list 包含肿瘤纯度[Purity]、倍性[Ploidy]、位点的估计信息[SeqName、Position、LogR、LogOR]以及片段的估计信息[SeqName、Position.Start、Position.End、LogR、LogOR.Square、CN.Total、CN.Minor、Cell.Fraction]
@@ -204,16 +204,16 @@ Facets.CNV.Calling <- function(SNP.Pileup.Res,
   ############
   ## 2.数据预处理以及拷贝数的估计
   ############
-  # 读取Snp Pileup生成的read矩阵，统计每个SNP位点在正常样本和肿瘤样本中覆盖到的总read数(参考+变异)以及比对到参考基因组的read数
+  # 读取Snp Pileup生成的read矩阵, 统计每个SNP位点在正常样本和肿瘤样本中覆盖到的总read数(参考+变异)以及比对到参考基因组的read数
   SNP.Pileup.Res <- normalizePath(SNP.Pileup.Res, winslash = "/", mustWork = TRUE)
   SNP.Read.Mtr <- readSnpMatrix(SNP.Pileup.Res, err.thresh = Err.Thresh, del.thresh = Del.Thresh)
   Chrom.Is.Numeric <- grepl("^\\d*$", SNP.Read.Mtr$Chromosome)
   Mtr.Chrom.Numeric <- SNP.Read.Mtr[Chrom.Is.Numeric, ]
   Mtr.Chrom.Character <- SNP.Read.Mtr[! Chrom.Is.Numeric, ]
   SNP.Read.Mtr <- rbind(Mtr.Chrom.Numeric[order(as.numeric(Mtr.Chrom.Numeric$Chromosome)), ], Mtr.Chrom.Character[order(Mtr.Chrom.Character$Chromosome), ])
-  # 数据预处理(SNP位点的杂合性判断与筛选，LogR与LogOR值的计算, SNP位点片段化)
+  # 数据预处理(SNP位点的杂合性判断与筛选, LogR与LogOR值的计算, SNP位点片段化)
   Mtr.Processes <- preProcSample(SNP.Read.Mtr, gbuild = match.arg(Genome.Assemblies), ugcpct = as.list(Udef.GC.List), unmatched = !Tumor.Normal.Matched, ndepth = Min.Depth, ndepthmax = Max.Depth, het.thresh = SNP.Het.VAF, snp.nbhd = Bin.Size, hetscale = LogOR.Powerful, cval = Segmentation.Critical.Value[1])
-  # 为EM算法估计初始的参数值(片段重选，片段聚类，估计二倍体状态LogR，估计拷贝数状态、细胞分数等参数)
+  # 为EM算法估计初始的参数值(片段重选, 片段聚类, 估计二倍体状态LogR, 估计拷贝数状态、细胞分数等参数)
   NV.Fit <- procSample(Mtr.Processes, cval = Segmentation.Critical.Value[2], min.nhet = Segment.Min.Het)
   # 基于期望最大化(EM)算法估计最终参数(纯度、倍性、拷贝数状态、细胞分数)
   EM.Fit <- emcncf(NV.Fit, min.nhet = Segment.Min.Het, maxiter = EM.Max.Iter, eps = EM.Con.Thresh)
