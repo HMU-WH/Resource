@@ -62,8 +62,9 @@ Get.GEO.Sample.Info <- function(Series.Path){
     Name <- gsub("^!", "", Info[1])
     Value <- gsub("\"", "", Info[-1])
     Value[Value %in% c("", "NA")] <- NA
-    if(all(grepl(": ", Value[! is.na(Value)]))){
-      Value.Prefix <- unique(gsub(": .*$", "", Value))
+    Value.Is.NA <- is.na(Value)
+    if(all(grepl(": ", Value[!Value.Is.NA]))){
+      Value.Prefix <- unique(gsub(": .*$", "", Value[!Value.Is.NA]))
       if(length(Value.Prefix) == 1){
         Name <- Value.Prefix
         Value <- gsub("^.*: ", "", Value)
