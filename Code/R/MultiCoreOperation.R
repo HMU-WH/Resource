@@ -55,6 +55,7 @@ Parallel.Execut <- function(Data, Function, ..., Cores.Need = 1, Cores.Type = c(
                             ParApply = parApply(Cluster, Data, MARGIN = ParApply.MARGIN, Function, ...),
                             ParLapply = parLapply(Cluster, Data, Function, ...),
                             ParSapply = parSapply(Cluster, Data, Function, ..., USE.NAMES = ParSapply.USE.NAMES))
+  # 返回结果
   return(Parallel.Result)
 }
 
@@ -95,5 +96,6 @@ Foreach.Execut <- function(Data, Function, ..., Cores.Need = 1, Cores.Type = c("
   registerDoParallel(Cluster) # 进行集群注册
   # 进行并行运算并返回结果
   Foreach.Result <- foreach(Iterative.Data = Data, .packages = Common.Packages, .export = Common.Objects) %dopar% Function(Iterative.Data, ...)
+  # 返回结果
   return(Foreach.Result)
 }

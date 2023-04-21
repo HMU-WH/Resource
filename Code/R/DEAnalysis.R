@@ -44,6 +44,7 @@ DE.Limma <- function(Data, Is.Case, Is.Voom = FALSE, Voom.Plot = FALSE, Adj.Meth
   Fit <- eBayes(Fit)
   # p值校正、提取差异分析结果
   Limma.Result <- topTable(Fit, number = Inf, adjust.method = Adj.Method, sort.by = "none")
+  # 返回结果
   return(Limma.Result)
 }
 
@@ -85,6 +86,7 @@ DE.EdgeR <- function(Data, Is.Case, Normalize.Method=c("TMM", "TMMwsp", "RLE", "
   Fit <- glmQLFTest(Fit, contrast = Contrast)
   # p值校正、提取差异分析结果
   EdgeR.Result <- as.data.frame(topTags(Fit, n = Inf, adjust.method = Adj.Method, sort.by = "none"))
+  # 返回结果
   return(EdgeR.Result)
 }
 
@@ -112,6 +114,6 @@ DE.DESeq <- function(Data, Is.Case, Adj.Method = p.adjust.methods){
   DESeq.DataSet <- DESeq(DESeq.DataSet)
   # 提取DESeq分析结果(参数contrast用于规定fold change的计算方式为"case"/"control")
   DESeq.Result <- data.frame(results(DESeq.DataSet, contrast = c("Condition", "case", "control"), pAdjustMethod = Adj.Method))
-  # 返回结果包含三列:"logFC"、"P.Value"、"P.Adj"
+  # 返回结果
   return(DESeq.Result)
 }

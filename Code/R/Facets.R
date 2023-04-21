@@ -169,9 +169,7 @@ Facets.CNV.Calling <- function(SNP.Pileup.Res,
                                Genome.Assemblies = c("hg18", "hg19", "hg38", "mm9", "mm10", "udef"), Udef.GC.List = NULL, Err.Thresh = Inf, Del.Thresh = Inf, 
                                Min.Depth = 35, Max.Depth = 1000, SNP.Het.VAF = 0.25, Bin.Size = 250, Segmentation.Critical.Value = c(25, 150), Segment.Min.Het = 15, EM.Max.Iter = 10, EM.Con.Thresh = 0.001){
   library(facets)
-  ############
-  ## 1.参数判断及预处理
-  ############  
+  # 参数判断
   Bin.Size <- as.numeric(Bin.Size)
   Show.Plot <- as.logical(Show.Plot)  
   Min.Depth <- as.numeric(Min.Depth)
@@ -200,10 +198,6 @@ Facets.CNV.Calling <- function(SNP.Pileup.Res,
             length(Del.Thresh) == 1 && (is.infinite(Del.Thresh) || (Del.Thresh >= 0 && Del.Thresh %% 1 == 0)), 
             length(Tumor.Normal.Matched) == 1 && (Tumor.Normal.Matched || (!Tumor.Normal.Matched && SNP.Het.VAF <= 0.1)), 
             length(Segmentation.Critical.Value) == 2 && all(Segmentation.Critical.Value >= 0) && Segmentation.Critical.Value[2] >= Segmentation.Critical.Value[1])
-  
-  ############
-  ## 2.数据预处理以及拷贝数的估计
-  ############
   # 读取Snp Pileup生成的read矩阵, 统计每个SNP位点在正常样本和肿瘤样本中覆盖到的总read数(参考+变异)以及比对到参考基因组的read数
   SNP.Pileup.Res <- normalizePath(SNP.Pileup.Res, winslash = "/", mustWork = TRUE)
   SNP.Read.Mtr <- readSnpMatrix(SNP.Pileup.Res, err.thresh = Err.Thresh, del.thresh = Del.Thresh)
@@ -217,17 +211,11 @@ Facets.CNV.Calling <- function(SNP.Pileup.Res,
   NV.Fit <- procSample(Mtr.Processes, cval = Segmentation.Critical.Value[2], min.nhet = Segment.Min.Het)
   # 基于期望最大化(EM)算法估计最终参数(纯度、倍性、拷贝数状态、细胞分数)
   EM.Fit <- emcncf(NV.Fit, min.nhet = Segment.Min.Het, maxiter = EM.Max.Iter, eps = EM.Con.Thresh)
-  
-  ############
-  ## 3.绘图
-  ############
+  # 绘图
   if(Show.Plot){
     plotSample(x = NV.Fit, emfit = EM.Fit)
   }
-  
-  ############
-  ## 4.结果封装
-  ############
+  # 结果封装
   return(
     list(
       Purity = EM.Fit$purity,

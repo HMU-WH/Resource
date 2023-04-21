@@ -31,17 +31,12 @@ Venn.View <- function(..., Sets.List = NULL,
                       Sets.Name.Size = 5, Sets.Name.Colour = "#2F4F4F", Sets.Name.Opacity = 1, 
                       Sets.Stroke.Size = 1, Sets.Stroke.Colour = NULL, Sets.Stroke.Opacity = 1, Sets.Stroke.Linetype = "solid", 
                       Intersection.Label.Size = 3, Intersection.Label.Colour = "#2F4F4F", Intersection.Label.Opacity = 1){
-  ############
-  ## 0.集合数据的整合
-  ############
+  # 集合数据的整合
   Sets.List <- lapply(c(list(...), as.list(Sets.List)), function(Set){ return(unique(as.character(Set))) })
   Sets.List.Num <- length(Sets.List)
   Sets.List.Member.Num <- length(unique(unlist(Sets.List)))
   if(Sets.List.Num > 7){ stop("集合数目不应超过【7】个 ...", call. = FALSE) }
-  
-  ############
-  ## 1.参数判断与预处理
-  ############
+  # 参数判断
   Sets.Name <- as.character(Sets.Name)
   Show.Set.Total <- as.logical(Show.Set.Total)
   Sets.Name.Size <- as.numeric(Sets.Name.Size)
@@ -91,10 +86,7 @@ Venn.View <- function(..., Sets.List = NULL,
   }else if(length(Sets.Fill.Colour) != Sets.List.Num){
     stop(sprintf("Stroke.Colour: 需要的颜色数目为【%s】, 给定的颜色数目为【%s】 ...", length(Sets.Stroke.Colour), Sets.List.Num))
   }
-  
-  ############
-  ## 2.获取ggplot格式的venn图信息并对其进行修改
-  ############
+  # 获取ggplot格式的venn图信息并对其进行修改
   Venn.Plot <- venn::venn(Sets.List, zcolor = Sets.Fill.Colour, ilabels = TRUE, opacity = Sets.Fill.Opacity, box = FALSE, ggplot = TRUE)
   Layers.Num <- length(Venn.Plot$layers)
   Layers.Fill.Index <- 1:Sets.List.Num + 1
@@ -119,10 +111,7 @@ Venn.View <- function(..., Sets.List = NULL,
     }
     return(Layer)
   })
-  
-  ############
-  ## 3.返回修改后的绘图结果
-  ############
+  # 返回修改后的绘图结果
   return(Venn.Plot)
 }
 
@@ -157,28 +146,18 @@ Genome.View <- function(...,
                         Genome.Version = unique(c(GenomeInfoDb::registered_UCSC_genomes()$genome, GenomeInfoDb::registered_NCBI_assemblies()$assembly))){
   
   library(ggplot2)
-  ############
-  ## 0.参数判断
-  ############
+  # 参数判断
   Auto.Marge <- as.logical(Auto.Marge)
   SeqName.Ratio <- as.numeric(SeqName.Ratio)
   Genome.Version <- match.arg(Genome.Version)
   Feature.Name.Aligned <- as.logical(Feature.Name.Aligned)
   Feature.Data.List <- c(list(...), as.list(Feature.Data.List))
   stopifnot(length(Auto.Marge) == 1, length(Feature.Name.Aligned) == 1, length(SeqName.Ratio) == 1 && SeqName.Ratio > 0 && SeqName.Ratio < 1)
-  
-  ############
-  ## 1.导入相应的基因组版本相关信息
-  ############
   # 查询基因组版本对应的基因组序列信息(名称、长度、...)
   Genome.Seqinfo <- GenomeInfoDb::Seqinfo(genome = Genome.Version)
   Genome.Seqinfo.SeqName <- Genome.Seqinfo@seqnames
   Genome.Seqinfo.SeqLength <- Genome.Seqinfo@seqlengths
-  
-  ############
-  ## 3.提取绘图数据所包含的基因组序列,  并判断这些序列是否存在与所选取的基因组版本中
-  ############
-  # 提取特征信号数据中包含的基因组序列名称
+  # 提取特征信号数据中包含的基因组序列名称, 并判断这些序列是否存在与所选取的基因组版本中
   Common.SeqName <- unique(
     unlist(
       lapply(Feature.Data.List, function(Feature.Data){
@@ -189,10 +168,6 @@ Genome.View <- function(...,
   if(!is.null(Common.SeqName) && any(! Common.SeqName %in% Genome.Seqinfo.SeqName)){
     stop(sprintf("'Point.Data'或'Segment.Data'的'SeqName'不能为Null且元素应均存在于(%s)", paste0(Genome.Seqinfo.SeqName, collapse = ", ")))
   }
-  
-  ############
-  ## 4.格式化需要绘制的基因组序列相关的位置信息
-  ############
   # 提取特征数据与参考基因组共有的序列信息
   Common.SeqName.Info <- data.frame(SeqName = Genome.Seqinfo.SeqName[Genome.Seqinfo.SeqName %in% Common.SeqName], SeqLength = Genome.Seqinfo.SeqLength[Genome.Seqinfo.SeqName %in% Common.SeqName])
   # 将共有序列的长度累加, 用于后面绘制横坐标的位点信息
@@ -201,10 +176,7 @@ Genome.View <- function(...,
   Common.SeqName.Info$Label.Position <- (2*Common.SeqName.Info$Accumulate.SeqLength - Common.SeqName.Info$SeqLength)/2
   # 建立一个序列长度映射, 用于后面计算特这数据的横坐标
   Common.SeqName.Accumulate.Before.Map <- setNames(object = Common.SeqName.Info$Accumulate.SeqLength - Common.SeqName.Info$SeqLength, nm = Common.SeqName.Info$SeqName)
-  
-  ############
-  ## 5.格式化绘图数据基因组位置信息, 以及美学映射信息
-  ############
+  # 格式化绘图数据基因组位置信息, 以及美学映射信息
   Feature.Data.List  <- lapply(Feature.Data.List, function(Feature.Data){
     Feature.Data <- as.list(Feature.Data)
     if((is.null(Feature.Data$Point.Data) || nrow(as.data.frame(Feature.Data$Point.Data)) == 0) && (is.null(Feature.Data$Segment.Data) || nrow(as.data.frame(Feature.Data$Segment.Data)) == 0)){
@@ -245,10 +217,7 @@ Genome.View <- function(...,
       return(Feature.Data)
     }
   })
-  
-  ############
-  ## 6.绘制基因组序列条带(上下两条)
-  ############
+  # 绘制基因组序列条带(上下两条)
   SeqName.Plots <- lapply(c(top = "top", bottom = "bottom"), function(Postion){
     Common.SeqName.Info.Num <- nrow(Common.SeqName.Info)
     if(Common.SeqName.Info.Num == 1){
@@ -278,10 +247,7 @@ Genome.View <- function(...,
         )
     )
   })
-  
-  ############
-  ## 7.绘制各特征信号(点、线段)
-  ############
+  # 绘制各特征信号(点、线段)
   Feature.Plots <- lapply(Feature.Data.List[!is.na(Feature.Data.List)], function(Feature.Data){
     Point.Data <- Feature.Data$Point.Data
     Segment.Data <- Feature.Data$Segment.Data
@@ -320,10 +286,7 @@ Genome.View <- function(...,
     }
     return(Feature.Plot + labs(x = NULL, y = Feature.Data$Feature.Name) + theme_test() +theme(legend.key = element_rect(colour = NA, fill = "transparent"), plot.background = element_rect(colour = NA, fill = "transparent"), panel.background = element_rect(colour = NA, fill = "transparent"), legend.background = element_rect(colour = NA, fill = "transparent"), legend.box.background = element_rect(colour = NA, fill = "transparent")))
   })
-  
-  ############
-  ## 8.格式化返回的可视化结果
-  ############
+  # 格式化返回的可视化结果
   if(Auto.Marge){
     Feature.Plots <- lapply(Feature.Plots, function(Feature.Plot){
       return(Feature.Plot + theme(axis.line.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank(), axis.title.x = element_blank(), axis.ticks.length.x = unit(0, "pt"), legend.title = element_blank(), plot.margin = margin(t = 2.5, r = 10, b = 2.5, l = 10))
@@ -349,27 +312,18 @@ Genome.Allele.CN.View <- function(Data,
                                   Minor.Colour = "#696969", Major.Colour = "#2F4F4F",
                                   Genome.Version = unique(c(GenomeInfoDb::registered_UCSC_genomes()$genome, GenomeInfoDb::registered_NCBI_assemblies()$assembly))){
   library(ggplot2)
-  ############
-  ## 0.参数判断
-  ############
+  # 参数判断
   Data <- as.data.frame(Data)
   Plot.Title <- as.character(Plot.Title)
   Minor.Colour <- as.character(Minor.Colour)
   Major.Colour <- as.character(Major.Colour)
   Genome.Version <- match.arg(Genome.Version)
   stopifnot(length(Plot.Title) <= 1, length(Minor.Colour) == 1, length(Major.Colour) == 1, all(c("SeqName", "Position.Start", "Position.End", "CN.Major", "CN.Minor") %in% colnames(Data)))
-  
-  ############
-  ## 1.导入相应的基因组版本相关信息
-  ############
   # 查询基因组版本对应的基因组序列信息(名称、长度、...)
   Genome.Seqinfo <- GenomeInfoDb::Seqinfo(genome = Genome.Version)
   Genome.Seqinfo.SeqName <- Genome.Seqinfo@seqnames
   Genome.Seqinfo.SeqLength <- Genome.Seqinfo@seqlengths
-  
-  ############
-  ## 2.格式化需要绘制的基因组序列相关的位置信息
-  ############
+  # 格式化需要绘制的基因组序列相关的位置信息
   if(all(unique(Data$SeqName) %in% Genome.Seqinfo.SeqName)){
     # 提取特征数据与参考基因组共有的序列信息
     Common.SeqName.Info <- data.frame(SeqName = Genome.Seqinfo.SeqName[Genome.Seqinfo.SeqName %in% unique(Data$SeqName)], SeqLength = Genome.Seqinfo.SeqLength[Genome.Seqinfo.SeqName %in% unique(Data$SeqName)])
@@ -386,10 +340,7 @@ Genome.Allele.CN.View <- function(Data,
   }else{
     stop(sprintf("'Data'的'SeqName'元素应均存在于(%s)", paste0(Genome.Seqinfo.SeqName, collapse = ", ")))
   }
-  
-  ############
-  ## 3.格式化绘图信息
-  ############
+  # 格式化绘图信息
   Data <- Reduce(rbind, apply(Data, 1, function(Row.Data){
     SeqName <- as.character(Row.Data[1])
     Position.Start <- as.numeric(Row.Data[2])
@@ -412,10 +363,7 @@ Genome.Allele.CN.View <- function(Data,
       data.frame(SeqName = SeqName, X.Min = Position.Start, X.Max = Position.End, Y.Min = Y.Min, Y.Max = Y.Max, CN.Type = factor(CN.Type, levels = c("CN.Minor", "CN.Major")))
     )
   }))
-  
-  ############
-  ## 4.绘图
-  ############
+  # 返回绘图结果
   return(
     ggplot() + 
       geom_rect(data = Data, aes(xmin = X.Min, xmax = X.Max, ymin = Y.Min, ymax = Y.Max, fill = CN.Type), colour = "white", lwd = 0.01) +

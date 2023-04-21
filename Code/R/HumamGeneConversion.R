@@ -50,6 +50,7 @@ HGC.Local <- function(Values,
            Conversion.Type <- Conversion.Allow.Type[as.numeric(Conversion.Type.Indexs)]
          })
   Conversion.Result <- AnnotationDbi::select(org.Hs.eg.db, keys = Values, columns = Conversion.Type, keytype = Values.Type)
+  # 返回结果
   return(Conversion.Result)
 }
 
@@ -110,5 +111,6 @@ HGC.Internet <- function(Values,
          })
   # 获取转换结果
   Conversion.Result <- getBM(values = Values, filters = Values.Type, attributes = c(Values.Type, Conversion.Type), mart = Mart.Use)
+  # 返回结果
   return(Conversion.Result)
 }
