@@ -1,3 +1,17 @@
+<style>
+    a {text-decoration: none;}
+    h1 {border-bottom: none; margin-top: auto;}
+</style>
+
+
+# <center>JAVA</center>
+
+---
+
+---
+
+---
+
 ### 基本数据类型
 
 |  类型   |  包装类   | 默认值 |
@@ -403,8 +417,8 @@ public class 子类 extends 父类 {
 
 |     关键字      | 访问构造方法 |  访问成员属性  |  访问成员方法  |
 | :-------: | :-------: | :------: | :------: |
-| **this(本类)**  |  this(···);  | this.成员属性 | this.成员方法  |
-| **super(父类)** | super(···);  | super.成员属性 | super.成员方法 |
+| **this(本类)**  |  `this(···);`  | this.成员属性 | this.成员方法  |
+| **super(父类)** | `super(···);` | super.成员属性 | super.成员方法 |
 
 ```java
 注: 可以利用"this"和"super"关键字针对性地调用局部、成员、父类中重名的属性或方法(非重写方法), 静态方法中不能使用"this"和"super"关键字;
@@ -1688,10 +1702,10 @@ public static void fileDelete(File src) {
 
 > ###### 顶级父类
 
-|            | 输入流(读)  |  输出流(写)  |
-| :--------: | :---------: | :----------: |
-| **字节流** | InputStream | OutputStream |
-| **字符流** |   Reader    |    Writer    |
+|            |  输入流(读)   |   输出流(写)   |
+| :--------: | :-----------: | :------------: |
+| **字节流** | `InputStream` | `OutputStream` |
+| **字符流** |   `Reader`    |    `Writer`    |
 
 ```java
 注: 字符流的底层也是字节流, 中间有一个将字节编码成字符的过程
@@ -1699,10 +1713,10 @@ public static void fileDelete(File src) {
 
 > ###### 常用子类
 
-|            |     输入流      |      输出流      |
-| :--------: | :-------------: | :--------------: |
-| **字节流** | FileInputStream | FileOutputStream |
-| **字符流** |   FileReader    |    FileWriter    |
+|            |      输入流       |       输出流       |
+| :--------: | :---------------: | :----------------: |
+| **字节流** | `FileInputStream` | `FileOutputStream` |
+| **字符流** |   `FileReader`    |    `FileWriter`    |
 
 ```java
 /*FileInputStream常用构造方法*/
@@ -1864,10 +1878,10 @@ OutputStreamWriter(OutputStream out, String charsetName); // 将字节输出流�
 ```
 > ###### 缓冲流
 
-|            |       输入流        |        输出流        |
-| :--------: | :-----------------: | :------------------: |
-| **字节流** | BufferedInputStream | BufferedOutputStream |
-| **字符流** |   BufferedReader    |    BufferedWriter    |
+|            |        输入流         |         输出流         |
+| :--------: | :-------------------: | :--------------------: |
+| **字节流** | `BufferedInputStream` | `BufferedOutputStream` |
+| **字符流** |   `BufferedReader`    |    `BufferedWriter`    |
 
 ```java
 /*BufferedInputStream常用构造方法*/
@@ -2019,6 +2033,20 @@ public static void toZip(File file, String entryName, ZipOutputStream zipOutputS
     }
 }
 ```
+> ###### 属性文件(Properties)
+
+```java
+"Properties"底层是一个"Map"集合, 通常用于读取和写入属性文件, 属性文件是一种以键值对形式存储配置信息的文本文件, 扩展名通常为".properties", 并且每一行包含一个键值对，以等号"="分隔;
+```
+
+```java
+/*常用成员方法(与IO流相关)*/
+void load(Reader reader); // 通过字符输入流加载配置文件中的信息
+void load(InputStream inStream); // 通过字节输入流加载配置文件中的信息
+void store(Writer writer, String comments); // 通过字符输出流将配置信息输出至配置文件, “comments”为想在文件头添加的注释信息
+void store(OutputStream out, String comments); // 通过字节输出流将配置信息输出至配置文件, “comments”为想在文件头添加的注释信息
+```
+
 ---
 
 ### 多线程相关操作
@@ -2524,12 +2552,12 @@ ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, Ti
 |        参数         |                             描述                             |
 | :-----------------: | :----------------------------------------------------------: |
 |  **corePoolSize**   |          核心线程数量, 线程池始终保持活性的线程数量          |
-| **maximumPoolSize** | 最大线程数量, 线程池中最大限度允许同时存在的线程数量, "maximumPoolSize - corePoolSize"为临时线程数量 |
+| **maximumPoolSize** | 最大线程数量, 线程池中最大限度允许同时存在的线程数量, `maximumPoolSize - corePoolSize`为临时线程数量 |
 |  **keepAliveTime**  | 临时线程在空闲时的最大存活时间(值), 空闲时间超过此时间的临时线程将被从线程池中移除 |
 |      **unit**       | 临时线程在空闲时的最大存活时间(单位), 空闲时间超过此时间的临时线程将被从线程池中移除 |
-|    **workQueue**    | 一个阻塞队列, 用于存放待执行的任务, 常用"ArrayBlockingQueue"和"LinkedBlockingQueue" |
-|  **threadFactory**  | 线程工厂, 即用于创建线程的方式, 一般使用"Executors.defaultThreadFactory()" |
-|     **handler**     | 任务的拒绝策略, 即当"workQueue"排满后, 针对新提交任务的处理方式, 一般使用"new ThreadPoolExecutor.AbortPolicy()", 即丢弃任务并抛出异常 |
+|    **workQueue**    | 一个阻塞队列, 用于存放待执行的任务, 常用`ArrayBlockingQueue`和`LinkedBlockingQueue` |
+|  **threadFactory**  | 线程工厂, 即用于创建线程的方式, 一般使用`Executors.defaultThreadFactory()` |
+|     **handler**     | 任务的拒绝策略, 即当"workQueue"排满后, 针对新提交任务的处理方式, 一般使用`new ThreadPoolExecutor.AbortPolicy()`, 即丢弃任务并抛出异常 |
 
 ```java
 /*使用工具类Executors创建线程池(仅列出常用方法)*/
@@ -2553,6 +2581,133 @@ Future<?> submit(Runnable task); // 向线程池提交任务, 传递一个实现
 4. 当核心线程数目达到最大值, 等待队列排满, 且临时线程的数目也达到最大值时, 再次提交任务会出发任务拒绝策略
 ```
 ---
+
+### 反射与动态代理
+
+> ###### 获取Class对象
+
+```java
+类名.class; // 法一
+对象.getClass(); // 法二
+Class.forName("全类名"); // 法三
+```
+
+> ###### 获取构造方法(Constructor)
+
+```java
+/*Class类相关成员方法*/
+Constructor<?>[] getConstructors(); // 获取所有由"public"修饰的构造方法
+Constructor<?>[] getDeclaredConstructors(); // 获取所有的构造方法(包括由非"public"修饰的构造方法)
+Constructor<T> getConstructor(Class<?>... parameterTypes); // 根据构造方法的参数获取指定的由"public"修饰的构造方法, 参数中Class对象的顺序要与目标构造方法参数列表的顺序一致
+Constructor<T> getDeclaredConstructor(Class<?>... parameterTypes); // 根据构造方法的参数获取指定的构造方法(包括由非"public"修饰的构造方法), 参数中Class对象的顺序要与目标构造方法参数列表的顺序一致
+```
+
+```java
+/*Constructor常用成员方法*/
+int getParameterCount(); // 获取该构造方法中参数的个数
+int getModifiers(); // 获取该构造方法修饰符对应的数字编号
+Parameter[] getParameters(); // 获取该构造方法各参数信息
+Class<?>[] getParameterTypes(); // 获取该构造方法各参数的Class对象
+T newInstance(Object ... initargs); // 使用该构造方法创建对象, 传递的参数要与构造方法的参数列表保持一致
+void setAccessible(boolean flag); // 是否取消该构造方法的权限校验, 取消权限校验后通过"newInstance"方法执行构造方法将不受权限修饰符的限制
+```
+
+> ###### 获取成员属性(Field)
+
+```java
+/*Class类相关成员方法*/
+Field[] getFields(); // 获取所有由"public"修饰的成员属性
+Field[] getDeclaredFields(); // 获取所有成员属性(包括由非"public"修饰的成员属性)
+Field getField(String name); // 根据属性名获取指定的由"public"修饰的成员属性
+Field getDeclaredField(String name); // 根据属性名获取指定的成员属性(包括由非"public"修饰的成员属性)
+```
+
+```java
+/*Field常用成员方法*/
+String getName(); // 获取该成员属性的属性名
+Class<?> getType(); // 获取该成员属性的数据类型
+int getModifiers(); // 获取该成员属性修饰符对应的数字编号
+Object get(Object obj); // 获取对象"obj"中该成员属性对应的值
+void set(Object obj, Object value); // 设置对象"obj"中该成员属性对应的值
+void setAccessible(boolean flag); // 是否取消该成员属性的权限校验, 取消权限校验后通过"get"或"set"方法获取或修改成员属性将不受权限修饰符的限制
+```
+
+> ###### 获取成员方法(Method)
+
+```java
+/*Class类相关成员方法*/
+Method[] getMethods(); // 获取所有由"public"修饰的成员方法
+Method[] getDeclaredMethods(); // 获取所有成员方法(包括由非"public"修饰的成员方法)
+Method getMethod(String name, Class<?>... parameterTypes); // 根据方法名和方法的参数获取指定的由"public"修饰的成员方法, 参数中Class对象的顺序要与目标成员方法参数列表的顺序一致
+Method getDeclaredMethod(String name, Class<?>... parameterTypes); // 根据方法名和方法的参数获取指定的成员方法(包括由非"public"修饰的成员方法), 参数中Class对象的顺序要与目标成员方法参数列表的顺序一致
+```
+
+```java
+/*Method常用成员方法*/
+String getName(); // 获取该成员方法的方法名
+int getParameterCount(); // 获取该成员方法中参数的个数
+Class<?> getReturnType(); // 获取该成员方法的返回值类型
+int getModifiers(); // 获取该成员方法修饰符对应的数字编号
+Parameter[] getParameters(); // 获取该成员方法各参数信息
+Class<?>[] getParameterTypes(); // 获取该成员方法各参数的Class对象
+Object invoke(Object obj, Object... args); // 调用对象"obj"中的该成员方法, 传递的参数要与成员方法的参数列表保持一致 
+void setAccessible(boolean flag); // 是否取消该成员属性的权限校验, 取消权限校验后可以通过"invoke"方法调用该成员方法时将不受权限修饰符的限制
+```
+
+> ###### 动态代理(Proxy)
+
+```java
+代理对象可以无侵入式的给被代理对象增强其他的功能, 代理对象可以在被代理对象执行相关方法的前后增加一些其他的操作; 简单来说, 代理对象监控的就是被代理对象要执行的方法, 这一过程是通过接口作为桥梁来实现的, 即代理对象和被代理对象要实现相同的接口, 从而监视接口中的方法;
+```
+
+```java
+/*成员方法(用于创建代理对象)*/
+static Object newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h);
+```
+
+|      参数      |                             描述                             |
+| :------------: | :----------------------------------------------------------: |
+|   **loader**   | 一个类加载器对象, 用于加载生成的代理类, 一般使用被代理对象的类加载器作为参数 |
+| **interfaces** | 一个接口数组, 表示要由代理类实现的接口列表, 代理对象会实现这些接口中的方法, 并将方法调用转发给`InvocationHandler`对象处理 |
+|     **h**      | 一个`InvocationHandler`接口的实例化对象(常用匿名内部类), `InvocationHandler`接口的`invoke()`方法用于处理代理对象的方法调用 |
+
+```java
+// 例:
+// 接口
+public interface Star {
+    void sing(String name);
+    void dance(String name);
+}
+// 实现类
+class BigStar implements Star{
+    @Override
+    public void sing(String name) {
+        System.out.println("艺人在舞台上演唱了一首【" + name + "】···");
+    }
+
+    @Override
+    public void dance(String name) {
+        System.out.println("艺人在舞台上跳了一支【" + name + "】···");
+    }
+}
+// 测试方法
+public static void main(String[] args){
+    BigStar bigStar = new BigStar();
+    Star starProxy = (Star) Proxy.newProxyInstance(bigStar.getClass().getClassLoader(), new Class[]{Star.class}, new InvocationHandler() {
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            System.out.println("艺人受邀进行【" + method.getName() + "】表演, 代理人正在进行相关的准备工作···");
+            method.invoke(bigStar, args); // 利用反射
+            System.out.println("艺人演出结束, 代理人正在进行相关的善后工作···");
+            return null;
+        }
+    });
+    starProxy.sing("摇篮曲");
+    starProxy.dance("民族舞");
+}
+```
+---
+
 ### 常用类及其常用方法
 
 > ###### Object(祖宗类)
@@ -2695,24 +2850,4 @@ static <T extends Comparable<? super T>> void sort(List<T> list); // 按照默�
 
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-### Temp
-
----
-
-````
-```
-···
-System.out.println()
-````
 
