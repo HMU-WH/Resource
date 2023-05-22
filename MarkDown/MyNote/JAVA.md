@@ -2584,7 +2584,15 @@ Future<?> submit(Runnable task); // 向线程池提交任务, 传递一个实现
 
 ### 反射与动态代理
 
-> ###### 获取Class对象
+> ###### 类加载器(ClassLoader)
+
+```java
+/*常用成员方法*/
+static ClassLoader getSystemClassLoader(); // 获取系统类加载器
+InputStream getResourceAsStream(String name); // 根据给定资源文件的路径获取相应的字节输入流(若使用相对路径, 应相对于类路径的根目录, 即"src"目录)
+```
+
+> ###### 获取字节码对象(Class)
 
 ```java
 类名.class; // 法一
@@ -2592,24 +2600,12 @@ Future<?> submit(Runnable task); // 向线程池提交任务, 传递一个实现
 Class.forName("全类名"); // 法三
 ```
 
-> ###### 获取构造方法(Constructor)
-
 ```java
-/*Class类相关成员方法*/
-Constructor<?>[] getConstructors(); // 获取所有由"public"修饰的构造方法
-Constructor<?>[] getDeclaredConstructors(); // 获取所有的构造方法(包括由非"public"修饰的构造方法)
-Constructor<T> getConstructor(Class<?>... parameterTypes); // 根据构造方法的参数获取指定的由"public"修饰的构造方法, 参数中Class对象的顺序要与目标构造方法参数列表的顺序一致
-Constructor<T> getDeclaredConstructor(Class<?>... parameterTypes); // 根据构造方法的参数获取指定的构造方法(包括由非"public"修饰的构造方法), 参数中Class对象的顺序要与目标构造方法参数列表的顺序一致
-```
-
-```java
-/*Constructor常用成员方法*/
-int getParameterCount(); // 获取该构造方法中参数的个数
-int getModifiers(); // 获取该构造方法修饰符对应的数字编号
-Parameter[] getParameters(); // 获取该构造方法各参数信息
-Class<?>[] getParameterTypes(); // 获取该构造方法各参数的Class对象
-T newInstance(Object ... initargs); // 使用该构造方法创建对象, 传递的参数要与构造方法的参数列表保持一致
-void setAccessible(boolean flag); // 是否取消该构造方法的权限校验, 取消权限校验后通过"newInstance"方法执行构造方法将不受权限修饰符的限制
+/*常用成员方法*/
+String getName(); // 获取该类的全类名
+String getSimpleName(); // 获取该类的简单类名
+String getPackageName(); // 获取该类所在包的包名
+ClassLoader getClassLoader(); // 获取定义该类的类加载器
 ```
 
 > ###### 获取成员属性(Field)
@@ -2630,6 +2626,25 @@ int getModifiers(); // 获取该成员属性修饰符对应的数字编号
 Object get(Object obj); // 获取对象"obj"中该成员属性对应的值
 void set(Object obj, Object value); // 设置对象"obj"中该成员属性对应的值
 void setAccessible(boolean flag); // 是否取消该成员属性的权限校验, 取消权限校验后通过"get"或"set"方法获取或修改成员属性将不受权限修饰符的限制
+```
+> ###### 获取构造方法(Constructor)
+
+```java
+/*Class类相关成员方法*/
+Constructor<?>[] getConstructors(); // 获取所有由"public"修饰的构造方法
+Constructor<?>[] getDeclaredConstructors(); // 获取所有的构造方法(包括由非"public"修饰的构造方法)
+Constructor<T> getConstructor(Class<?>... parameterTypes); // 根据构造方法的参数获取指定的由"public"修饰的构造方法, 参数中Class对象的顺序要与目标构造方法参数列表的顺序一致
+Constructor<T> getDeclaredConstructor(Class<?>... parameterTypes); // 根据构造方法的参数获取指定的构造方法(包括由非"public"修饰的构造方法), 参数中Class对象的顺序要与目标构造方法参数列表的顺序一致
+```
+
+```java
+/*Constructor常用成员方法*/
+int getParameterCount(); // 获取该构造方法中参数的个数
+int getModifiers(); // 获取该构造方法修饰符对应的数字编号
+Parameter[] getParameters(); // 获取该构造方法各参数信息
+Class<?>[] getParameterTypes(); // 获取该构造方法各参数的Class对象
+T newInstance(Object ... initargs); // 使用该构造方法创建对象, 传递的参数要与构造方法的参数列表保持一致
+void setAccessible(boolean flag); // 是否取消该构造方法的权限校验, 取消权限校验后通过"newInstance"方法执行构造方法将不受权限修饰符的限制
 ```
 
 > ###### 获取成员方法(Method)
