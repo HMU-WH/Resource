@@ -4,7 +4,7 @@
 
 
 ##' @description 通过FactoMineR包进行主成分分析
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Data matrix | data.frame 行为样本列为特征的特征矩阵
 ##' @param Is.Scale logical 是否对特征矩阵进行标准化(默认进行中心化); 默认TRUE
 ##' @param Min.Contribution numeric 设置最小累积贡献度限制[0,100]; 默认80

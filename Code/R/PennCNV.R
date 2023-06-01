@@ -4,7 +4,7 @@
 ####################################################################
 
 ##' @description 通过PennCNV的compile_pfb.pl从包含BAF值的多个信号强度文件编译PFB文件
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param PennCNV.Input character[] 制表符分割的信号强度文件集合, 每个文件必须包含三列信息[Name(标记名称, 必须为首列), *.B Allele Freq(BAF)]; 若未提供Position.File, 则还需包含信息[Chr(染色体), Position(位置)]; 列名需严格按照要求设置
 ##' @param Position.File character 指定标记坐标信息文件, 文件必须包含三列信息[Name(标记名称, 必须为首列), Chr(染色体), Position(位置)]; 列名需严格按照要求设置, 不存在于该文件中的标记信息不会计算PFB值
 ############' [注: 若设置了Position.File, 则PennCNV默认仅处理信号强度文件与Position.File共有的标记, 即共有的Name信息所在行]
@@ -75,7 +75,7 @@ PennCNV.Compile.PFB <- function(PennCNV.Input,
 
 
 ##' @description 通过PennCNV的detect_cnv.pl结合hmm文件与pfb文件对给定的信号强度文件进行CNV识别
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param PennCNV.Input character[] 制表符分割的信号强度文件集合, 每个文件必须包含三列信息[Name(标记名称, 必须为首列), *.Log R Ratio(LRR), *.B Allele Freq(BAF)]; 若Coordinate.From.Input = FALSE, 则还需包含信息[Chr(染色体), Position(位置)]; 列名需严格按照要求设置
 ##' @param HMM.File character 指定HMM(Hidden Markov Model)文件, 具体形式参考(http://penncnv.openbioinformatics.org/en/latest/user-guide/input/#hmm-file)
 ##' @param PFB.File character 指定PFB(Population frequency of B allele)文件, 提供每个标记的PFB信息, 必须包含四列信息[Name(标记名称), Chr(染色体), Position(位置), PFB(B等位基因的群体频率)], 列名可有可无, 但四列信息顺序需严格按照要求设置

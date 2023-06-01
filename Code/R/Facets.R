@@ -5,7 +5,7 @@
 
 
 ##' @description 通过R函数传参调用SNP Pileup统计各样本在SNP位点处的[参考、变异、错误、缺失]碱基的read数
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param BAM.Set character[] BAM文件集合(各文件需提前进行coordinate排序处理)
 ##' @param Common.Vcf character 常见的多态SNP的VCF文件(一个很好的来源是dbSNP的common_all.vcf.gz, 需提前进行与BAM文件进行一致的coordinate排序处理)
 ##' @param System.Pileup.Alias character SNP Pileup软件在系统中的可执行命令名, 默认"snp-pileup"
@@ -146,7 +146,7 @@ Facets.SNP.Pileup <- function(BAM.Set, Common.Vcf, System.Pileup.Alias = "snp-pi
 
 
 ##' @description 通过Facets包从SNP Pileup结果中推断等位特异拷贝数
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param SNP.Pileup.Res character SNP Pileup的结果文件, 可通过函数Facets.SNP.Pileup(正常样本在前, 肿瘤样本在后)获得
 ##' @param Tumor.Normal.Matched logical 设置SNP.Pileup.Res中正常样本和肿瘤样本是否来自同一个体(影响杂合性SNP的判定); 默认TRUE
 ##' @param LogOR.Powerful logical 设置LogOR是否应在分段和聚类的过程中占据更多权重(增加检测杂合性SNP少的区域的等位基因失衡的能力); 默认TRUE

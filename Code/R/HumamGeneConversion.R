@@ -5,7 +5,7 @@
 
 
 ##' @description 基于org.Hs.eg.db包进行人类基因组的基因转换
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Values character[] 待转换的基因集合
 ##' @param Values.Type character 待转换的基因集合的基因类型
 ##' @param Conversion.Type character[] 期望转换的基因类型(支持多类别转化)
@@ -56,7 +56,7 @@ HGC.Local <- function(Values,
 
 
 ##' @description 基于biomaRt包进行人类基因组的基因转换(并非支持全部待转类型), 联网操作
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Values character[] 待转换的基因集合
 ##' @param Values.Type character 待转换的基因集合的基因类型
 ##' @param Conversion.Type character[] 期望转换的基因类型

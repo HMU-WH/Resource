@@ -4,7 +4,7 @@
 
 
 ##' @description 执行系统终端命令
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param System.Command character 设置要执行的终端命令
 ##' @param Success.Message character 设置终端命令成功运行后给出的提示信息; 默认""
 System.Command.Run <- function(System.Command, Success.Message = ""){

@@ -5,7 +5,7 @@
 
 
 ##' @description 使用逐步回归的三种方法通过AIC筛选特征
-##' @author  Xteam.Wh
+##' @author  HMU-WH
 ##' @param Data matrix | data.frame 特征矩阵(行为样本列为特征,最后一列为因变量)
 ##' @param Is.Reg logical 是否为回归模型筛选特征, 否则所选特征应用于分类模型, 默认True
 ##' @return 逐步回归三种方法筛选的特征集合
@@ -40,7 +40,7 @@ Feature.Selection.Stepwise <- function(Data, Is.Reg = TRUE){
 
 
 ##' @description 通过单/多因素COX回归分析, 筛选与预后相关的特征
-##' @author  Xteam.Wh
+##' @author  HMU-WH
 ##' @param Data matrix | data.frame 特征矩阵(行为样本列为特征, 无因变量)
 ##' @param Time numeric[] 样本(患者)无复发或死亡的生存时间
 ##' @param Is.Event logical[] 样本(患者)是否发生复发或死亡等截断事件

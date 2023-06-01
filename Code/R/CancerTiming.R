@@ -4,7 +4,7 @@
 
 
 ##' @description 计算拷贝数改变事件("WGD"、"CNLOH"、"SingleGain"、"DoubleGain")发生的相对时间
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param MUT.Data matrix | data.frame 包含突变信息的矩阵, 包含必要列[Sample.ID(样本标识ID), SeqName(序列名), Position(所在序列的位点), Alt.Counts(变异等位的reads数), Ref.Counts(参考等位的reads数)]
 ##' @param CNV.Data matrix | data.frame 包含拷贝数改变信息的矩阵, 包含必要列[Sample.ID(样本标识ID), SeqName(序列名), Position.Start(所在序列的起始位点), Position.End(所在序列的结束位点), CN.Major(主拷贝数), CN.Minor(次拷贝数)]
 ##' @param Samples.Purity numeric[] 一个包含以样本标识ID命名的数值向量, 包含了各样本的肿瘤纯度

@@ -5,7 +5,7 @@
 
 
 ##' @description 基于parallel包进行并行运算
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Data 用于进行并行运算的数据(数据的适用格式与迭代方式式均取决于参数"Parallel.Type")
 ##' @param Function funcction 要使用的函数, 函数名或直接进行自定义函数的编写
 ##' @param ... 传递给Function的附加参数, 与Function的参数相匹配
@@ -61,7 +61,7 @@ Parallel.Execut <- function(Data, Function, ..., Cores.Need = 1, Cores.Type = c(
 
 
 ##' @description 基于doParallel包进行并行运算
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Data 用于进行并行运算的数据(对于vector和list对每一个成员进行迭代, 对于matrix和data.frame对每列进行迭代, 对于array则对每个元素进行迭代)
 ##' @param Function funcction 要使用的函数, 函数名或直接进行自定义函数的编写
 ##' @param ... 传递给Function的附加参数, 与Function的参数相匹配

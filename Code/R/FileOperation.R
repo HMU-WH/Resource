@@ -4,7 +4,7 @@
 
 
 ##' @description 从GEO提供的Series Matrix文件获取样本相关信息
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Series.Path character GEO提供的Series Matrix文件路径
 ##' @return data.frame 包含样本相关信息
 Get.GEO.Sample.Info <- function(Series.Path){

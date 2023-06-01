@@ -7,7 +7,7 @@
 
 
 ##' @description 计算两组数据之间的差异显著性
-##' @author  Xteam.Wh
+##' @author HMU-WH
 ##' @param Data1 numeric[] 样本数据值向量
 ##' @param Data2 numeric[] 样本数据值向量
 ##' @param Alternative character 指定差异检验的检验方式(双边|单侧), 可选("two.sided", "less", "greater"); 默认"two.sided"
@@ -35,7 +35,7 @@ DST.Two <- function(Data1, Data2,
 
 
 ##' @description 对给定四格表计算差异显著性
-##' @author  Xteam.Wh
+##' @author HMU-WH
 ##' @param Data matrix | data.frame 待检验的四格表
 ##' @param Method character 指定对四格表进行差异检验的方法, 可选("Chisq", "Fisher"); 默认"Chisq"
 ##' @param Chisq.Correct logical 是否使用连续性矫正卡方检验, 当且仅当Method = "Chisq"时有效; 默认TRUE
@@ -67,7 +67,7 @@ DST.Table <- function(Data,
 
 
 ##' @description 给定分组信息, 计算各组分数据之间差异显著性
-##' @author  Xteam.Wh
+##' @author HMU-WH
 ##' @param Data numeric[] 样本数据值向量
 ##' @param Group character[] 样本分组信息, 即每个样本对应的组分
 ##' @param Normality logical 各组分数据是否符合正态分布, 若符合正态则进行参数检验(Anova|Welch)，否则使用非参数检验(Kruskal-Wallis); 默认TRUE
@@ -89,7 +89,7 @@ DST.Multi <- function(Data, Group, Normality = TRUE, Var.Equal = TRUE){
 
 
 ##' @description 给定分组信息, 计算各组分之间样本生存差异显著性
-##' @author  Xteam.Wh
+##' @author HMU-WH
 ##' @param Time numeric[] 样本(患者)无复发或死亡的生存时间
 ##' @param Group character[] 样本分组信息, 即每个样本对应的组分
 ##' @param Is.Event logical[] 样本(患者)是否发生复发或死亡等截断事件

@@ -5,7 +5,7 @@
 
 
 ##' @description 用于下载Annovar注释所需数据库的相关信息
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Database character 要下载的注释数据库名称
 ##' @param Annovar.Dir character Annovar的安装目录(必要pl文件所存在的目录); 默认NULL, 即当前工作目录
 ##' @param Database.Dir character 注释数据库信息的下载目录; 默认NULL, 即当前"Annovar.Dir"下的"humandb"目录
@@ -63,7 +63,7 @@ Annovar.Download <- function(Database,
 
 
 ##' @description 通过Annovar的table_Annovar.pl对给定的avinput或vcf文件进行注释
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Annovar.Input character 需要进行注释的文件路径, 必须为avinput或vcf格式文件
 ############' 其中avinput文件要求是没有列名并以制表符分隔的文件, 且前5列分别为突变位点的[染色体(前缀"chr"可省)、起始位置、终止位置、参考核苷酸、观测核苷酸]信息
 ##' @param Database character[] 注释所要使用的数据库集合

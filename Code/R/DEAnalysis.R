@@ -6,7 +6,7 @@
 
 
 ##' @description 通过limma进行差异表达分析
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Data matrix | data.frame 表达谱数据(行为基因列为样本, 对于一代测序数据, 应该是经过log2转化处理后的数据; 对于二代测序数据, 应该是未经log2转化处理的数据)
 ##' @param Is.Case logical[] 标志表达谱各样本是否为case样本, 要与表达普样本顺序一一对应
 ##' @param Is.Voom logical 是否对表达谱数据进行voom标化处理, 当应用于二代测序数据(建议: Counts或TPM数据)时需要设置为TRUE; 默认FALSE 
@@ -50,7 +50,7 @@ DE.Limma <- function(Data, Is.Case, Is.Voom = FALSE, Voom.Plot = FALSE, Adj.Meth
 
 
 ##' @description 通过edgeR进行差异表达分析
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Data matrix | data.frame 未经过任何处理的Count表达谱数据(行为基因列为样本)
 ##' @param Is.Case logical[] 标志表达谱各样本是否为case样本, 要与表达普样本顺序一一对应
 ##' @param Normalize.Method character 计算归一化因子时所使用的归一化方法, 可选("TMM", "TMMwsp", "RLE", "upperquartile", "none");  默认"TMM"
@@ -92,7 +92,7 @@ DE.EdgeR <- function(Data, Is.Case, Normalize.Method=c("TMM", "TMMwsp", "RLE", "
 
 
 ##' @description 通过DESeq2包进行差异表达分析
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Data matrix | data.frame 未经过任何处理的Count表达谱数据(行为基因列为样本)
 ##' @param Is.Case logical[] 标志表达谱各样本是否为case样本, 要与表达普样本顺序一一对应
 ##' @param Adj.Method character 差异表达分析p值校正方法, 可从"p.adjust.methods"中选择; 默认"holm"

@@ -9,7 +9,7 @@
 
 
 ##' @description 通过R函数传参调用Gatk GetSampleName获取SAM/BAM/CRAM的样本名[文件头标签@RG的SM值]
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Gatk.Local.Jar character "gatk-package-Xxx-local.jar"文件路径(存在于gatk安装目录中)
 ##' @param AM.Input character 要读取的SAM/BAM/CRAM文件
 ##' @param System.Java.Alias character java软件在系统中的可执行命令名; 默认"java"
@@ -69,7 +69,7 @@ Gatk.GetSampleName <- function(Gatk.Local.Jar, AM.Input, System.Java.Alias = "ja
 
 
 ##' @description 通过R函数传参调用Gatk Mutect2进行体突变的识别
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Gatk.Local.Jar character "gatk-package-Xxx-local.jar"文件路径(存在于gatk安装目录中)
 ##' @param Genome.Refence character 参考基因组文件[fasta格式, 且要求所在目录下同时含有对应的索引文件与序列字典文件]
 ##' @param AM.Input character[] 要读取的SAM/BAM/CRAM文件集合[来自同一个体，且要求所在目录下同时含有对应的索引文件]
@@ -242,7 +242,7 @@ Gatk.Mutect2 <- function(Gatk.Local.Jar,
 
 
 ##' @description 通过R函数传参调用Gatk LearnReadOrientationModel进行模型学习, 估计方向偏差参数(先验概率)
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Gatk.Local.Jar character "gatk-package-Xxx-local.jar"文件路径(存在于gatk安装目录中)
 ##' @param F1R2.Counts.Input character[] 由Gatk Mutect2输出的肿瘤样本F1R2计数文件[来自同一个体]
 ##' @param Output.Prefix character 结果文件前缀[可携带路径]; 默认NULL, 即当前工作目录下的"Gatk.LearnReadOrientationModel"
@@ -321,7 +321,7 @@ Gatk.LearnReadOrientationModel <- function(Gatk.Local.Jar,
 
 
 ##' @description 通过R函数传参调用Gatk GetPileupSummaries总结样本在已知变异位点集上的reads支持情况(堆积指标)[肿瘤样本与正常样本单独使用]
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Gatk.Local.Jar character "gatk-package-Xxx-local.jar"文件路径(存在于gatk安装目录中)
 ##' @param AM.Input character[] 要读取的SAM/BAM/CRAM文件集合[来自同一个体同一类型，且要求所在目录下同时含有对应的索引文件]
 ##' @param Germline.Variant.Sites character 一个通用的种系变异位点参考文件[vcf格式(支持.gz压缩格式), 且要求所在目录下同时含有对应的索引文件], 此资源必须只包含双等位SNP, 且必须在INFO字段中包含AF注释
@@ -409,7 +409,7 @@ Gatk.GetPileupSummaries <- function(Gatk.Local.Jar,
 
 
 ##' @description 通过R函数传参调用Gatk CalculateContamination评估交叉样本污染reads分数
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Gatk.Local.Jar character "gatk-package-Xxx-local.jar"文件路径(存在于gatk安装目录中)
 ##' @param Tumor.Pileup.Input character 由Gatk GetPileupSummaries针对肿瘤样本统计的堆积指标文件
 ##' @param Normal.Pileup.Input character 由Gatk GetPileupSummaries针对正常样本[与肿瘤样本来自同一个体]统计的堆积指标文件
@@ -514,7 +514,7 @@ Gatk.CalculateContamination <- function(Gatk.Local.Jar,
 
 
 ##' @description 通过R函数传参调用Gatk FilterMutectCalls过滤由Mutect2识别的体突变
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Gatk.Local.Jar character "gatk-package-Xxx-local.jar"文件路径(存在于gatk安装目录中)
 ##' @param Genome.Refence character 参考基因组文件[fasta格式, 且要求同所在目录下同时含有对应的索引文件与序列字典文件]
 ##' @param Mutect2.Calling.Result character 由Gatk Mutect2识别的体突变结果文件[vcf格式(支持.gz压缩格式), 且要求所在目录下同时含有对应的索引文件以及stas文件]

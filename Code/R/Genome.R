@@ -6,7 +6,7 @@
 
 
 ##' @description 将基因组位点匹配到对应的片段上
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Locus.Data matrix | data.frame 包含位点信息的矩阵, 包含必要列[SeqName(序列名), Position(所在序列的位点)]
 ##' @param Segment.Data matrix | data.frame 包含片段信息的矩阵, 包含必要列[SeqName(序列名), Position.Start(所在序列的起始位点), Position.End(所在序列的结束位点)]
 ##' @return data.frame 包含相匹配的行索引[Locus.Index(对应Locus.Data), Segment.Index(对应Segment.Data)]
@@ -31,7 +31,7 @@ Genome.Segment.Match <- function(Locus.Data, Segment.Data){
 
 
 ##' @description 对不同版本的基因组坐标进行转换
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Data matrix | data.frame 包含位点信息的矩阵, 包含必要列[SeqName(序列名), Position.Start(所在序列的起始位点), Position.End(所在序列的结束位点)]
 ##' @param Chain.File character 用于基因组坐标转换的Chain文件, 可从UCSC进行下载(https://hgdownload.soe.ucsc.edu/downloads.html)
 ############' 进入下载界面后点击当前基因组对应的"LiftOver files"连接, 之后将与目标基因组进行坐标转换的文件下载到本地并解压
@@ -68,7 +68,7 @@ Genome.Coord.Convert <- function(Data, Chain.File){
 
 
 ##' @description 计算特定位点在参考序列中的GC含量
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Data matrix | data.frame 包含位点信息的矩阵, 包含必要列[SeqName(序列名), Position(所在序列的位点)]
 ##' @param Genome.Refence character 参考基因组文件(FASTA格式)
 ##' @param Seq.Type character 序列类型, 可选("DNA", "RNA"), 默认"DNA"

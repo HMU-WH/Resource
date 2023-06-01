@@ -6,7 +6,7 @@
 
 
 ##' @description 绘制venn图(最多支持七个集合)
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param ... character[] 每个向量为一个集合
 ##' @param Sets.List list 集合列表, 每一个元素为一个向量
 ##' @param Show.Set.Total logical 设置是否统计各集合的元素数量并显示在集合标签尾部; 默认FALSE
@@ -117,7 +117,7 @@ Venn.View <- function(..., Sets.List = NULL,
 
 
 ##' @description 对基因组上的信号特征(点和线段)进行可视化
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param ... list 每个list包含以下元素(其中至少要包含Point.Data与Segment.Data其中的一项, 否则将被从队列中移除): 
 ############' $Feature.Name character 特征名, 将作为对应的纵坐标title属性; 默认NULL
 ############' $Point.Data data.frame 包含必要列[SeqName(序列名)、Position(所在序列的位点)、Feature.Value(特征信号值)], 可选列[Feature.Type(特征信号所属类别)]
@@ -299,7 +299,7 @@ Genome.View <- function(...,
 }
 
 ##' @description 基因组等位特异拷贝数信息可视化
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Data data.frame data.frame 包含必要列[SeqName(序列名)、Position.Start(所在序列的起始位点)、Position.End(所在序列的终止位点)、CN.Major(主拷贝数)、 CN.Minor(次拷贝数)]
 ############' 注意: SeqName信息要与选择的Genome.Version保持一致
 ##' @param Plot.Title character 设置图片标题, 将被添加到图片的正上方; 默认NULL

@@ -5,7 +5,7 @@
 
 
 ##' @description 结合SNP位点的BAF值与LogR值推断等位特异拷贝数
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Tumor.BAF.File character 肿瘤样本的BAF文件
 ############' 要求制表符分隔且包含行名列名, 行名为SNP位点的标识符, 各列所包含的信息依次为[SeqName、Position、Sample1.BAF、Sample2.BAF、Sample3.BAF、...], 其中[SeqName]信息不能包含"chr"前缀, 列名整体前端要保留一个制表符
 ##' @param Tumor.LogR.File character 肿瘤样本的LogR文件
@@ -181,7 +181,7 @@ ASCAT.CNV.Calling <- function(Tumor.BAF.File, Tumor.LogR.File,
 
 
 ##' @description 从高通量测序数据中计算LogR值与BAF值
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param Loci.Prefix character SNP位点坐标数据文件的前缀[可携带路径], 每条染色体对应一个坐标文件, 文件的全路径格式为“[Loci.Prefix][Chromosome][.txt]”
 ############' 每一个SNP位点坐标数据文件要求是没有列名并以制表符分隔的文件, 包含[Chromosome、Position]两列信息, 其中"Chromosome"信息应与BAM文件或CRAM文件中使用得格式统一, 即是否包含前缀"chr"
 ##' @param Alleles.Prefix character SNP位点的等位基因数据文件的前缀[可携带路径], 每条染色体对应一个坐标文件, 文件的全路径格式为“[Alleles.Prefix][Chromosome][.txt]”

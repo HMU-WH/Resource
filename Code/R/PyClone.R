@@ -4,7 +4,7 @@
 
 
 ##' @description 通过R函数传参调用PyClone进行分析
-##' @author Xteam.Wh
+##' @author HMU-WH
 ##' @param PyClone.Input characcter[] tsv格式文件集合, 每个tsv文件都应该至少包含以下六列信息:
 ############' mutation_id: 突变位点的唯一标识, 跨数据集应该是相同的(个人建议格式为: "Gene:Chromosomes:Position")
 ############' ref_counts: 突变位点与reference allele相匹配的reads数
