@@ -17,8 +17,10 @@
 ##' @param Burnin.Samples numeric MCMC过程要保留的初始采样数, 默认2500
 ##' @param MH.Iterations numeric MCMC过程中Metropolis-Hastings(MH)采样算法的最大迭代次数, 默认5000
 ##' @param Min.SSMS numeric 提取结果是要求每个克隆中至少包含的SSM数量, 若该值小于1, 则为占总SSM数量的比例, 若该值为大于等于1的整数, 则为具体数目
+##' @param Keep.Superclone logical 是否保留超级亚克隆(对于非多主树的祖先克隆, 当其仅有一个子克隆时, 若该子克隆种的SSM数量大于等于祖先克隆种SSM数量的3倍, 则将该子克隆定义为超级亚克隆), 默认FALSE
+########' 若祖先克隆与超级亚克隆在样本种的平均CCF差值小于等于0.1, 则考虑将超级亚克隆与祖先克隆进行合并为新的祖先克隆
 ##' @param Include.Multiprimary logical 是否允许结果中包含多起源树, 即从Normal节点开始产生多个克隆, 默认FALSE
-##' @param Max.Mltiprimary numeric 允许多起源树存在最大比例, 当且仅当Include.Multiprimary为False时生效, 若多起源树存在的比例小于该值，将会从结果中移除多起源树; 若多起源树存在的比例大于等于该值, 程序会抛出异常, 默认0.8
+##' @param Max.Mltiprimary numeric 允许多主树存在最大比例, 当且仅当"Include.Multiprimary"为False时生效, 若多主树存在的比例小于该值，将会从结果中移除多主树; 若多主树存在的比例大于等于该值, 程序会抛出异常, 默认0.8
 PhyloWGS.Run <- function(SSM.File, 
                          Output.Dir, 
                          PhyloWGS.Dir, 
@@ -26,7 +28,7 @@ PhyloWGS.Run <- function(SSM.File,
                          CNV.File = NULL, Sign.Name = NULL, 
                          MCMC.Chain.Num = 5, Seed.Set = 1:5, 
                          MCMC.Samples = 2500, Burnin.Samples = 1000, MH.Iterations = 5000, 
-                         Min.SSMS = 0.01, Include.Multiprimary = FALSE, Max.Mltiprimary = 0.8){
+                         Min.SSMS = 0.01, Keep.Superclone = FALSE, Include.Multiprimary = FALSE, Max.Mltiprimary = 0.8){
   # 参数判断
   Min.SSMS <- as.numeric(Min.SSMS)
   Seed.Set <- as.numeric(Seed.Set)
@@ -40,6 +42,7 @@ PhyloWGS.Run <- function(SSM.File,
   Burnin.Samples <- as.numeric(Burnin.Samples)
   MCMC.Chain.Num <- as.numeric(MCMC.Chain.Num)
   Max.Mltiprimary <- as.numeric(Max.Mltiprimary)
+  Keep.Superclone <- as.logical(Keep.Superclone)
   Include.Multiprimary <- as.logical(Include.Multiprimary)
   System.Python2.Alias <- as.character(System.Python2.Alias)
   stopifnot(
@@ -69,6 +72,6 @@ PhyloWGS.Run <- function(SSM.File,
   System.Command.Run(System.Command = sprintf("\"%s\" \"%s/multievolve.py\" --num-chains %s --random-seeds %s --mcmc-samples %s --burnin-samples %s --mh-iterations %s --ssms \"%s\" --cnvs \"%s\" --output-dir \"%s/Multievolve\"", 
                                               System.Python2.Alias, normalizePath(PhyloWGS.Dir, winslash = "/"), MCMC.Chain.Num, paste0(Seed.Set, collapse = " "), MCMC.Samples, Burnin.Samples, MH.Iterations, normalizePath(SSM.File, winslash = "/"), normalizePath(CNV.File, winslash = "/"), normalizePath(Output.Dir, winslash = "/")))
   # 提取运行结果
-  System.Command.Run(System.Command = sprintf("\"%s\" \"%s/write_results.py\" --min-ssms %s%s \"%s\" \"%s/Multievolve/trees.zip\" \"%s/summ.json.gz\" \"%s/muts.json.gz\" \"%s/mutass.zip\"", 
-                                              System.Python2.Alias, normalizePath(PhyloWGS.Dir, winslash = "/"), Min.SSMS, ifelse(Include.Multiprimary, " --include-multiprimary", sprintf(" --max-multiprimary %s", Max.Mltiprimary)), Sign.Name, normalizePath(Output.Dir, winslash = "/"), normalizePath(Output.Dir, winslash = "/"), normalizePath(Output.Dir, winslash = "/"), normalizePath(Output.Dir, winslash = "/")))
+  System.Command.Run(System.Command = sprintf("\"%s\" \"%s/write_results.py\" --min-ssms %s%s%s \"%s\" \"%s/Multievolve/trees.zip\" \"%s/summ.json.gz\" \"%s/muts.json.gz\" \"%s/mutass.zip\"", 
+                                              System.Python2.Alias, normalizePath(PhyloWGS.Dir, winslash = "/"), Min.SSMS, ifelse(Keep.Superclone, " --keep-superclones", ""), ifelse(Include.Multiprimary, " --include-multiprimary", sprintf(" --max-multiprimary %s", Max.Mltiprimary)), Sign.Name, normalizePath(Output.Dir, winslash = "/"), normalizePath(Output.Dir, winslash = "/"), normalizePath(Output.Dir, winslash = "/"), normalizePath(Output.Dir, winslash = "/")))
 }
