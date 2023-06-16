@@ -1328,6 +1328,7 @@ public class 类名 {
 ```java
 /*JavaBean类*/
 public class Person {
+    // 成员属性
     private int age;
     private String name;
     // 无参构造
