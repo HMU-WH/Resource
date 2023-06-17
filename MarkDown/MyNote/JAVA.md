@@ -342,7 +342,7 @@ for (int num : arr) {
 > ###### 方法的重载
 
 ```java
-同一个类定义了多个方法名相同、参数不同的方法, 就构成了方法重载
+同一个类定义了多个方法名相同、参数不同的方法, 就构成了方法重载;
 ```
 
 > 注:
@@ -405,7 +405,7 @@ void printStackTrace(); // 打印异常的跟踪栈信息并输出到控制台
 ```
 
 ```JAVA
-注: 异常信息的详细程度"printStackTrace" > "toString" > "getMessage"
+注: 异常信息的详细程度"printStackTrace" > "toString" > "getMessage";
 ```
 
 ---
@@ -421,7 +421,7 @@ public class 子类 extends 父类 {
 ```
 
 ```java
-注: 未声明父类的类默认继承"Object"类, 因此可以将"Object"类看作是一切类的祖宗类
+注: 未声明父类的类默认继承"Object"类, 可将"Object"类视为一切类的祖宗类;
 ```
 
 > ###### 子类继承的内容
@@ -659,7 +659,7 @@ this.属性名; // 访问内部类成员属性
 > ###### 静态内部类
 
 ```java
-由"static"修饰的成员内部类
+由"static"修饰的成员内部类;
 ```
 
 ```java
