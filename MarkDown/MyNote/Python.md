@@ -1063,7 +1063,7 @@ threadObj = threading.Thread(self, group=None, target=None, name=None, args=(), 
 threading.current_thread()
 ```
 
-> ###### 线程对象的常用方法
+> ###### Thread对象的常用方法
 
 ```python
 name # 获取线程名
