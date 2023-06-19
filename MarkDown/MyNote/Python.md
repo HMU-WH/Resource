@@ -1002,7 +1002,7 @@ findall(pattern, string, flags=0) # 查找并返回所有匹配到的子字符�
 | **string**  | **要匹配的字符串**                                           |
 | **flags**   | 用于控制正则表达式的匹配行为:<br>        默认值`0`表示没有设置任何标志<br/>        `re.IGNORECASE` 或 `re.I`: 忽略大小写<br/>        `re.DOTALL` 或 `re.S`: 点号 `.` 可以匹配包括换行符在内的任意字符<br/>        `re.MULTILINE` 或 `re.M`: 多行模式, 使 `^` 和 `$` 可以匹配每一行的开头和结尾<br/>        `re.VERBOSE` 或 `re.X`：详细模式, 可以在正则表达式中使用空白和注释, 增加可读性<br/>        `re.UNICODE` 或 `re.U`: 启用Unicode匹配模式, 使 `\w`, `\W`, `\b`, `\B` 等模式可以匹配 Unicode 字符<br/>可以使用 `|` 将多个标志常量组合在一起: 若要同时启用忽略大小写和多行模式，可以使用 `re.IGNORECASE | re.MULTILINE` |
 
-> ###### Match对象的常用方法
+> ###### Match对象常用方法
 
 ```python
 group() # 返回匹配到的完整字符串
@@ -1060,13 +1060,12 @@ threadObj = threading.Thread(self, group=None, target=None, name=None, args=(), 
 > ###### 获取当前线程
 
 ```python
-threading.current_thread()
+threading.current_thread() # 获取当前线程对应的Thread对象常
 ```
 
-> ###### Thread对象的常用方法
+> ###### Thread对象常用方法
 
 ```python
-name # 获取线程名
 start() # 执行线程
 is_alive() # 判断线程是否仍在运行
 isDaemon() # 判断线程是否为守护线程
