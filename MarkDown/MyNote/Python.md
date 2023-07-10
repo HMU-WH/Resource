@@ -1143,8 +1143,8 @@ round(a, decimals=0, out=None) # 四舍五入, "decimals"保留的小数位数
 
 ```python
 # 创建数组(ndarray)对象
-ones(shape, dtype=None, order='C', *, like=None)  # 创建一个指定维度的全一数组, "shape"用于指定数组维度的元组
-zeros(shape, dtype=float, order='C', *, like=None) # 创建一个指定维度的全零数组, "shape"用于指定数组维度的元组
+ones(shape, dtype=None, order='C', *, like=None)  # 创建一个指定维度的全一数组, "shape"用于指定数组维数和维度的元组
+zeros(shape, dtype=float, order='C', *, like=None) # 创建一个指定维度的全零数组, "shape"用于指定数组维数和维度的元组
 arange(start, stop, step, dtype=None, *, like=None) #  创建一个按指定步长的连续的一维数组; "start"起始值(包含), 默认0; "stop"终止值(不包含); "step"步长, 默认1
 linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0) # 创建一个等间隔的一维数组; "start"起始值; "stop"终止值; "num"指定数组中的元素个数; "endpoint"指定是否包含终止值
 array(object, dtype=None, *, copy=True, order='K', subok=False, ndmin=0, like=None) #  从一个类数组对象(列表、元组等)"object"表创建一个数组; "dtype"指定数组的数据类型, 默认为"None", 表示根据输入数据自动推断数据类型; "ndmin"指定生成的数组的最小维度, 默认为0, 即生成一个一维数组
