@@ -1191,10 +1191,11 @@ array(object, dtype=None, *, copy=True, order='K', subok=False, ndmin=0, like=No
 ```python
 # 数组运算
 dot(a, b, out=None) # 计算两个数组的点积
+matmul(x1, x2, *args, **kwargs) # 计算两个数组的乘积
 add(x1, x2, *args, **kwargs) # 对数组中对应的元素进行加法运算
+divide(x1, x2, *args, **kwargs) # 对数组中对应的元素进行除法运算
 subtract(x1, x2, *args, **kwargs) # 对数组中对应的元素进行减法运算
 multiply(x1, x2, *args, **kwargs) # 对数组中对应的元素进行乘法运算
-divide(x1, x2, *args, **kwargs) # 对数组中对应的元素进行除法运算
 sum(a, axis=None, dtype=None, out=None, keepdims=np._NoValue, initial=np._NoValue, where=np._NoValue) # 计算数组中元素的和; "axis"表示沿那个维度进行计算, 对于二维数组, "0"表示按行求和, "1"表示按列求和, 默认对所有元素进行求和
 ```
 
